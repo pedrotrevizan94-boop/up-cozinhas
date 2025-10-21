@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "routes": [
+    {
+      "src": "/",
+      "dest": "/index.html"
+    },
+    {
+      "src": "/vender",
+      "dest": "/vender.html"
+    },
+    {
+      "src": "/vender.html",
+      "dest": "/vender.html"
+    }
+  ]
+}
+

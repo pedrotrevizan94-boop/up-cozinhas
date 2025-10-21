@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UP Cozinhas - Equipamentos para Bares e Restaurantes</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            box-sizing: border-box;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+        }
+        .gradient-bg-green {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .price-highlight {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .photo-container img {
+            transition: transform 0.3s ease;
+        }
+        .photo-container img:hover {
+            transform: scale(1.05);
+        }
+        .group:hover .photo-container img {
+            filter: brightness(0.8);
+        }
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        .page-section {
+            display: none;
+        }
+        .page-section.active {
+            display: block;
+        }
+        
+        /* Photo carousel styles */
+        .photo-preview {
+            min-width: 200px;
+            width: 200px;
+            height: 200px;
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid #e5e7eb;
+            transition: all 0.3s ease;
+        }
+        
+        .photo-preview:hover {
+            border-color: #3b82f6;
+            transform: scale(1.02);
+        }
+        
+        .photo-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .photo-remove {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: rgba(239, 68, 68, 0.9);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .photo-remove:hover {
+            background: rgba(239, 68, 68, 1);
+            transform: scale(1.1);
+        }
+        
+        .photo-carousel-container {
+            scrollbar-width: thin;
+            scrollbar-color: #cbd5e1 #f1f5f9;
+        }
+        
+        .photo-carousel-container::-webkit-scrollbar {
+            height: 8px;
+        }
+        
+        .photo-carousel-container::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 4px;
+        }
+        
+        .photo-carousel-container::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        
+        .photo-carousel-container::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        
+        .photo-fullscreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        
+        .photo-fullscreen img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="gradient-bg text-white shadow-lg">
+        <div class="container mx-auto px-4 py-4 md:py-6">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2 md:space-x-3 flex-shrink-0">
+                    <div class="bg-white p-1.5 md:p-2 rounded-xl shadow-lg flex-shrink-0">
+                        <img src="/logo-up-cozinhas.png" alt="UP Cozinhas Logo" class="h-10 md:h-16 w-auto">
+                    </div>
+                    <div class="text-left">
+                        <h1 class="text-lg md:text-4xl font-bold whitespace-nowrap">UP Cozinhas</h1>
+                        <p class="text-red-100 text-xs md:text-lg whitespace-nowrap">Equipamentos Profissionais</p>
+                    </div>
+                </div>
+                <nav class="flex space-x-3 md:space-x-6 items-center text-xs md:text-base flex-shrink-0">
+                    <button onclick="showPage('produtos')" class="hover:text-red-200 transition-colors whitespace-nowrap" id="nav-produtos">Produtos</button>
+                    <a href="/vender.html" class="hover:text-red-200 transition-colors whitespace-nowrap">Vender</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Produtos Page -->
+    <div id="produtos-page" class="page-section active">
+        <!-- Hero Section -->
+        <main>
+            <section id="home" class="bg-white py-16">
+                <div class="container mx-auto px-4 text-center">
+                    <!-- Banner Loja -->
+                    <a href="https://www.google.com/maps/place/R.+Dr.+M%C3%A1rio+Vicente,+326+-+Vila+Dom+Pedro+I,+S%C3%A3o+Paulo+-+SP,+04270-000/@-23.6789,-46.6234,15z" target="_blank" rel="noopener,noreferrer" class="block hover:opacity-90 transition-opacity cursor-pointer">
+                        <img src="/banner-loja.png" alt="Visite Nossa Loja" class="w-full max-w-4xl mx-auto rounded-2xl shadow-lg mb-12">
+                    </a>
+                    
+                    <h2 class="text-5xl font-bold text-gray-800 mb-6">Equipamentos de Qualidade para Seu Negócio</h2>
+                    <p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">Especializados em equipamentos para bares e restaurantes com a melhor qualidade do mercado</p>
+                    
+                    <!-- Payment Highlights -->
+                    <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-12">
+                        <div class="bg-green-50 border-2 border-green-200 rounded-xl p-6 card-hover">
+                            <div class="text-green-600 mb-3">
+                                <svg class="w-12 h-12 mx-auto" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M2 17h20v2H2zm1.15-4.05L4 11l.85 1.95L6.8 13l-1.95.85L4 15.8l-.85-1.95L1.2 13l1.95-.85zM6.5 7L8 3.5 9.5 7 13 8.5 9.5 10 8 13.5 6.5 10 3 8.5 6.5 7zm8.64 4.5L16 10l.86 1.5L18.36 12l-1.5.86L16 14.36l-.86-1.5L13.64 12l1.5-.86z"/>
+                                </svg>
+                            </div>
+                            <h3 class="text-2xl font-bold text-green-700 mb-2">Parcelamento</h3>
+                            <p class="text-green-600 font-semibold">Até 12x sem juros no cartão de crédito</p>
+                        </div>
+                        
+                        <div class="bg-orange-50 border-2 border-orange-200 rounded-xl p-6 card-hover">
+                            <div class="text-orange-600 mb-3">
+                                <svg class="w-12 h-12 mx-auto" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                </svg>
+                            </div>
+                            <h3 class="text-2xl font-bold text-orange-700 mb-2">Desconto à Vista</h3>
+                            <p class="text-orange-600 font-semibold">Descontão especial para pagamento à vista</p>
+                        </div>
+
+                        <!-- Pias com Prateleira Section -->
+                        <div id="piasprateleirasSection" style="display: none;">
+                            <div class="text-center mb-8">
+                                <h3 class="text-3xl font-bold text-gray-800 mb-4">🚿 Pias de Aço Inox com Prateleira</h3>
+                                <div class="bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-2xl p-6 max-w-4xl mx-auto mb-8">
+                                    <h4 class="text-2xl font-bold mb-3">⭐ A Melhor qualidade do mercado!! + garantia de 1 ano</h4>
+                                    <p class="text-blue-100 text-lg">Pias profissionais em aço inoxidável com prateleira inferior lisa</p>
+                                </div>
+                                <p class="text-gray-600 text-lg mb-4">(comprimento x largura x altura)</p>
+                                <div class="bg-blue-50 border-2 border-blue-200 rounded-xl p-4 max-w-2xl mx-auto mb-8">
+                                    <div class="flex items-center justify-center space-x-4 text-blue-700">
+                                        <div class="flex items-center space-x-2">
+                                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                            </svg>
+                                            <span class="font-semibold">Fazemos também sob medida</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Pia 1 Cuba com Prateleira -->
+                            <div class="mb-12">
+                                <div class="text-center mb-6">
+                                    <h4 class="text-2xl font-bold text-blue-700 mb-3">🔵 Pia com 1 Cuba + Prateleira Inferior</h4>
+                                    <div class="bg-blue-100 border-2 border-blue-300 rounded-xl p-4 max-w-lg mx-auto">
+                                        <p class="text-blue-800 font-semibold">Cuba: 50 x 40 x 25cm</p>
+                                        <p class="text-blue-600 text-sm">Prateleira inferior lisa inclusa</p>
+                                    </div>
+                                </div>
+                                <div class="container mx-auto px-4">
+                                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="piasprateleiras1Grid">
+                                        <!-- Products will be populated by JavaScript -->
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Pia 2 Cubas com Prateleira -->
+                            <div class="mb-12">
+                                <div class="text-center mb-6">
+                                    <h4 class="text-2xl font-bold text-purple-700 mb-3">🟣 Pia com 2 Cubas + Prateleira Inferior</h4>
+                                    <div class="bg-purple-100 border-2 border-purple-300 rounded-xl p-4 max-w-lg mx-auto">
+                                        <p class="text-purple-800 font-semibold">2 Cubas: 50 x 40 x 25cm cada</p>
+                                        <p class="text-purple-600 text-sm">Prateleira inferior lisa inclusa</p>
+                                    </div>
+                                </div>
+                                <div class="container mx-auto px-4">
+                                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="piasprateleiras2Grid">
+                                        <!-- Products will be populated by JavaScript -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Prateleiras de Aço Inox Section -->
+                        <div id="prateleirasSection" style="display: none;">
+                            <div class="text-center mb-8">
+                                <h3 class="text-3xl font-bold text-gray-800 mb-4">📐 Prateleiras de Aço Inox</h3>
+                                <div class="bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-2xl p-6 max-w-4xl mx-auto mb-8">
+                                    <h4 class="text-2xl font-bold mb-3">⭐ A Melhor qualidade do mercado!! + garantia de 1 ano</h4>
+                                    <p class="text-green-100 text-lg">Prateleiras profissionais em aço inoxidável com mão francesas</p>
+                                </div>
+                                <p class="text-gray-600 text-lg mb-4">(comprimento x largura)</p>
+                                <div class="bg-blue-50 border-2 border-blue-200 rounded-xl p-4 max-w-2xl mx-auto mb-8">
+                                    <div class="flex items-center justify-center space-x-4 text-blue-700">
+                                        <div class="flex items-center space-x-2">
+                                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                            </svg>
+                                            <span class="font-semibold">Fazemos também sob medida</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="container mx-auto px-4">
+                                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="prateleirasGrid">
+                                    <!-- Products will be populated by JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Products Section -->
+            <section id="produtos" class="py-16 bg-gray-100">
+                <div class="container mx-auto px-4">
+                    <h2 class="text-4xl font-bold text-center text-gray-800 mb-12">Nossos Produtos</h2>
+                    
+                    <!-- Product Categories Grid -->
+                    <div id="categoriesGrid" class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+                        <!-- Mesas de Aço Inox -->
+                        <div class="bg-white rounded-xl p-4 shadow-lg card-hover border-2 border-gray-200 hover:border-red-400 cursor-pointer transition-all" onclick="openCategoryModal('mesas')">
+                            <div class="text-center">
+                                <div class="text-5xl mb-3">🍴</div>
+                                <h3 class="font-bold text-gray-800 mb-1 text-sm">Mesas de Aço Inox</h3>
+                                <p class="text-gray-600 text-xs">Mesas profissionais em aço inoxidável</p>
+                                <button class="mt-3 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold py-2 px-4 rounded-lg transition-colors w-full">
+                                    Ver Produtos
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Pias de Aço Inox -->
+                        <div class="bg-white rounded-xl p-4 shadow-lg card-hover border-2 border-gray-200 hover:border-red-400 cursor-pointer transition-all" onclick="openCategoryModal('pias')">
+                            <div class="text-center">
+                                <div class="text-5xl mb-3">🚰</div>
+                                <h3 class="font-bold text-gray-800 mb-1 text-sm">Pias de Aço Inox</h3>
+                                <p class="text-gray-600 text-xs">Pias profissionais em aço inoxidável</p>
+                                <button class="mt-3 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold py-2 px-4 rounded-lg transition-colors w-full">
+                                    Ver Produtos
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Prateleiras -->
+                        <div class="bg-white rounded-xl p-4 shadow-lg card-hover border-2 border-gray-200 hover:border-red-400 cursor-pointer transition-all" onclick="openCategoryModal('prateleiras')">
+                            <div class="text-center">
+                                <div class="text-5xl mb-3">📚</div>
+                                <h3 class="font-bold text-gray-800 mb-1 text-sm">Prateleiras de Aço Inox</h3>
+                                <p class="text-gray-600 text-xs">Prateleiras para organização</p>
+                                <button class="mt-3 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold py-2 px-4 rounded-lg transition-colors w-full">
+                                    Ver Produtos
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Estantes -->
+                        <div class="bg-white rounded-xl p-4 shadow-lg card-hover border-2 border-gray-200 hover:border-red-400 cursor-pointer transition-all" onclick="openCategoryModal('estantes')">
+                            <div class="text-center">
+                                <div class="text-5xl mb-3">📦</div>
+                                <h3 class="font-bold text-gray-800 mb-1 text-sm">Estantes de Aço Inox</h3>
+                                <p class="text-gray-600 text-xs">Estantes para armazenamento</p>
+                                <button class="mt-3 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold py-2 px-4 rounded-lg transition-colors w-full">
+                                    Ver Produtos
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Fogões Industriais -->
+                        <div class="bg-white rounded-xl p-4 shadow-lg card-hover border-2 border-gray-200 hover:border-red-400 cursor-pointer transition-all" onclick="openCategoryModal('fogoes')">
+                            <div class="text-center">
+                                <div class="text-5xl mb-3">🔥</div>
+                                <h3 class="font-bold text-gray-800 mb-1 text-sm">Fogões Industriais</h3>
+                                <p class="text-gray-600 text-xs">Fogões profissionais de alta potência</p>
+                                <button class="mt-3 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold py-2 px-4 rounded-lg transition-colors w-full">
+                                    Ver Produtos
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Chapeiras -->
+                        <div class="bg-white rounded-xl p-4 shadow-lg card-hover border-2 border-gray-200 hover:border-red-400 cursor-pointer transition-all" onclick="openCategoryModal('chapeiras')">
+                            <div class="text-center">
+                                <div class="text-5xl mb-3">🍳</div>
+                                <h3 class="font-bold text-gray-800 mb-1 text-sm">Chapeiras Industriais</h3>
+                                <p class="text-gray-600 text-xs">Chapeiras para lanches e grelhados</p>
+                                <button class="mt-3 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold py-2 px-4 rounded-lg transition-colors w-full">
+                                    Ver Produtos
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Freezers Horizontais -->
+                        <div class="bg-white rounded-xl p-4 shadow-lg card-hover border-2 border-gray-200 hover:border-red-400 cursor-pointer transition-all" onclick="openCategoryModal('freezers-horizontais')">
+                            <div class="text-center">
+                                <div class="text-5xl mb-3">❄️</div>
+                                <h3 class="font-bold text-gray-800 mb-1 text-sm">Freezers Horizontais</h3>
+                                <p class="text-gray-600 text-xs">Freezers para armazenamento</p>
+                                <button class="mt-3 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold py-2 px-4 rounded-lg transition-colors w-full">
+                                    Ver Produtos
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Geladeiras Expositoras -->
+                        <div class="bg-white rounded-xl p-4 shadow-lg card-hover border-2 border-gray-200 hover:border-red-400 cursor-pointer transition-all" onclick="openCategoryModal('geladeiras-expositoras')">
+                            <div class="text-center">
+                                <div class="text-5xl mb-3">🎊</div>
+                                <h3 class="font-bold text-gray-800 mb-1 text-sm">Geladeiras Expositoras</h3>
+                                <p class="text-gray-600 text-xs">Geladeiras para exposição</p>
+                                <button class="mt-3 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold py-2 px-4 rounded-lg transition-colors w-full">
+                                    Ver Produtos
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Cervejeiras Expositoras -->
+                        <div class="bg-white rounded-xl p-4 shadow-lg card-hover border-2 border-gray-200 hover:border-red-400 cursor-pointer transition-all" onclick="openCategoryModal('cervejeiras')">
+                            <div class="text-center">
+                                <div class="text-5xl mb-3">🍺</div>
+                                <h3 class="font-bold text-gray-800 mb-1 text-sm">Cervejeiras Expositoras</h3>
+                                <p class="text-gray-600 text-xs">Cervejeiras para bebidas</p>
+                                <button class="mt-3 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold py-2 px-4 rounded-lg transition-colors w-full">
+                                    Ver Produtos
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Freezer Vertical -->
+                        <div class="bg-white rounded-xl p-4 shadow-lg card-hover border-2 border-gray-200 hover:border-red-400 cursor-pointer transition-all" onclick="openCategoryModal('freezer-vertical')">
+                            <div class="text-center">
+                                <div class="text-5xl mb-3">❄️</div>
+                                <h3 class="font-bold text-gray-800 mb-1 text-sm">Freezer Vertical</h3>
+                                <p class="text-gray-600 text-xs">Freezers verticais profissionais</p>
+                                <button class="mt-3 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold py-2 px-4 rounded-lg transition-colors w-full">
+                                    Ver Produtos
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Utensílios -->
+                        <div class="bg-white rounded-xl p-4 shadow-lg card-hover border-2 border-gray-200 hover:border-red-400 cursor-pointer transition-all" onclick="openCategoryModal('utensilios')">
+                            <div class="text-center">
+                                <div class="text-5xl mb-3">🍳</div>
+                                <h3 class="font-bold text-gray-800 mb-1 text-sm">Utensílios</h3>
+                                <p class="text-gray-600 text-xs">Utensílios profissionais de cozinha</p>
+                                <button class="mt-3 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold py-2 px-4 rounded-lg transition-colors w-full">
+                                    Ver Produtos
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Liquidificadores e Extrator de Suco -->
+                        <div class="bg-white rounded-xl p-4 shadow-lg card-hover border-2 border-gray-200 hover:border-red-400 cursor-pointer transition-all" onclick="openCategoryModal('liquidificadores')">
+                            <div class="text-center">
+                                <div class="text-5xl mb-3">🥤</div>
+                                <h3 class="font-bold text-gray-800 mb-1 text-sm">Liquidificadores e Extrator de Suco</h3>
+                                <p class="text-gray-600 text-xs">Equipamentos para bebidas</p>
+                                <button class="mt-3 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold py-2 px-4 rounded-lg transition-colors w-full">
+                                    Ver Produtos
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Cutter -->
+                        <div class="bg-white rounded-xl p-4 shadow-lg card-hover border-2 border-gray-200 hover:border-red-400 cursor-pointer transition-all" onclick="openCategoryModal('cutter')">
+                            <div class="text-center">
+                                <div class="text-5xl mb-3">🔪</div>
+                                <h3 class="font-bold text-gray-800 mb-1 text-sm">Cutter</h3>
+                                <p class="text-gray-600 text-xs">Processadores industriais</p>
+                                <button class="mt-3 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold py-2 px-4 rounded-lg transition-colors w-full">
+                                    Ver Produtos
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Ralador de Coco e Queijo -->
+                        <div class="bg-white rounded-xl p-4 shadow-lg card-hover border-2 border-gray-200 hover:border-red-400 cursor-pointer transition-all" onclick="openCategoryModal('ralador')">
+                            <div class="text-center">
+                                <div class="text-5xl mb-3">🧀</div>
+                                <h3 class="font-bold text-gray-800 mb-1 text-sm">Ralador de Coco e Queijo</h3>
+                                <p class="text-gray-600 text-xs">Raladores profissionais</p>
+                                <button class="mt-3 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold py-2 px-4 rounded-lg transition-colors w-full">
+                                    Ver Produtos
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Cilindro Laminador -->
+                        <div class="bg-white rounded-xl p-4 shadow-lg card-hover border-2 border-gray-200 hover:border-red-400 cursor-pointer transition-all" onclick="openCategoryModal('cilindro')">
+                            <div class="text-center">
+                                <div class="text-5xl mb-3">🔧</div>
+                                <h3 class="font-bold text-gray-800 mb-1 text-sm">Cilindro Laminador</h3>
+                                <p class="text-gray-600 text-xs">Cilindros para massas</p>
+                                <button class="mt-3 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold py-2 px-4 rounded-lg transition-colors w-full">
+                                    Ver Produtos
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Fritadeiras Elétricas -->
+                        <div class="bg-white rounded-xl p-4 shadow-lg card-hover border-2 border-gray-200 hover:border-red-400 cursor-pointer transition-all" onclick="openCategoryModal('fritadeiras')">
+                            <div class="text-center">
+                                <div class="text-5xl mb-3">🍟</div>
+                                <h3 class="font-bold text-gray-800 mb-1 text-sm">Fritadeiras Elétricas</h3>
+                                <p class="text-gray-600 text-xs">Fritadeiras profissionais</p>
+                                <button class="mt-3 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold py-2 px-4 rounded-lg transition-colors w-full">
+                                    Ver Produtos
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Tacho Elétrico -->
+                        <div class="bg-white rounded-xl p-4 shadow-lg card-hover border-2 border-gray-200 hover:border-red-400 cursor-pointer transition-all" onclick="openCategoryModal('tacho')">
+                            <div class="text-center">
+                                <div class="text-5xl mb-3">🔥</div>
+                                <h3 class="font-bold text-gray-800 mb-1 text-sm">Tacho Elétrico</h3>
+                                <p class="text-gray-600 text-xs">Tachos para cozimento</p>
+                                <button class="mt-3 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold py-2 px-4 rounded-lg transition-colors w-full">
+                                    Ver Produtos
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Condimentadora/Pizzarola -->
+                        <div class="bg-white rounded-xl p-4 shadow-lg card-hover border-2 border-gray-200 hover:border-red-400 cursor-pointer transition-all" onclick="openCategoryModal('condimentadora')">
+                            <div class="text-center">
+                                <div class="text-5xl mb-3">🥄</div>
+                                <h3 class="font-bold text-gray-800 mb-1 text-sm">Condimentadora/Pizzarola Aço Inox</h3>
+                                <p class="text-gray-600 text-xs">Condimentadoras profissionais</p>
+                                <button class="mt-3 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold py-2 px-4 rounded-lg transition-colors w-full">
+                                    Ver Produtos
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Geladeira Aço Inox -->
+                        <div class="bg-white rounded-xl p-4 shadow-lg card-hover border-2 border-gray-200 hover:border-red-400 cursor-pointer transition-all" onclick="openCategoryModal('geladeira-inox')">
+                            <div class="text-center">
+                                <div class="text-5xl mb-3">❄️</div>
+                                <h3 class="font-bold text-gray-800 mb-1 text-sm">Geladeira Aço Inox</h3>
+                                <p class="text-gray-600 text-xs">Geladeiras profissionais inox</p>
+                                <button class="mt-3 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold py-2 px-4 rounded-lg transition-colors w-full">
+                                    Ver Produtos
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Balcões Refrigerados -->
+                        <div class="bg-white rounded-xl p-4 shadow-lg card-hover border-2 border-gray-200 hover:border-red-400 cursor-pointer transition-all" onclick="openCategoryModal('balcoes')">
+                            <div class="text-center">
+                                <div class="text-5xl mb-3">📊</div>
+                                <h3 class="font-bold text-gray-800 mb-1 text-sm">Balcões Refrigerados</h3>
+                                <p class="text-gray-600 text-xs">Balcões refrigerados profissionais</p>
+                                <button class="mt-3 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold py-2 px-4 rounded-lg transition-colors w-full">
+                                    Ver Produtos
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Cortador de Frios -->
+                        <div class="bg-white rounded-xl p-4 shadow-lg card-hover border-2 border-gray-200 hover:border-red-400 cursor-pointer transition-all" onclick="openCategoryModal('cortador-frios')">
+                            <div class="text-center">
+                                <div class="text-5xl mb-3">🔪</div>
+                                <h3 class="font-bold text-gray-800 mb-1 text-sm">Cortador de Frios</h3>
+                                <p class="text-gray-600 text-xs">Cortadores profissionais de frios</p>
+                                <button class="mt-3 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold py-2 px-4 rounded-lg transition-colors w-full">
+                                    Ver Produtos
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mesas de Aço Inox Section -->
+                    <div id="mesasSection" style="display: none;">
+                        <div class="text-center mb-8">
+                            <h3 class="text-3xl font-bold text-gray-800 mb-4">🔵 Mesas de Aço Inox</h3>
+                            <div class="bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-2xl p-6 max-w-4xl mx-auto mb-8">
+                                <h4 class="text-2xl font-bold mb-3">⭐ A Melhor qualidade do mercado!! + garantia de 1 ano</h4>
+                                <p class="text-blue-100 text-lg">Mesas profissionais em aço inoxidável para cozinhas industriais</p>
+                            </div>
+                            <p class="text-gray-600 text-lg mb-4">(comprimento x largura x altura)</p>
+                            <div class="bg-blue-50 border-2 border-blue-200 rounded-xl p-4 max-w-2xl mx-auto mb-8">
+                                <div class="flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-8 text-blue-700">
+                                    <div class="flex items-center space-x-2">
+                                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                        </svg>
+                                        <span class="font-semibold">Fazemos também sob medida</span>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                        </svg>
+                                        <span class="font-semibold">Mesa com rodinhas +R$ 250</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="container mx-auto px-4">
+                            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="mesasGrid">
+                                <!-- Products will be populated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <!-- Product sections -->
+                    <div id="productSections">
+                        <!-- Product sections will be added here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contato" class="py-16 bg-white">
+                <div class="container mx-auto px-4 text-center">
+                    <h2 class="text-4xl font-bold text-gray-800 mb-8">Entre em Contato</h2>
+                    <p class="text-xl text-gray-600 mb-8">Solicite seu orçamento personalizado</p>
+                    
+                    <div class="max-w-md mx-auto">
+                        <button onclick="window.open('https://wa.me/5511995192624?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20equipamentos%20de%20cozinha%20profissional.%0A%0A(Contato%20via%20site)', '_blank', 'noopener,noreferrer')" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-4 px-8 rounded-xl text-lg transition-colors">
+                            📱 WhatsApp
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Vender Equipamentos Page -->
+    <div id="vender-page" class="page-section">
+        <main class="py-16">
+            <div class="container mx-auto px-4">
+                <!-- Hero Section -->
+                <div class="text-center mb-16">
+                    <div class="bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-3xl p-12 mb-12">
+                        <div class="max-w-4xl mx-auto">
+                            <div class="bg-white bg-opacity-20 rounded-full p-6 mb-8 inline-block">
+                                <svg class="w-20 h-20 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                </svg>
+                            </div>
+                            <h1 class="text-5xl font-bold mb-6">💰 Compramos Seus Equipamentos!</h1>
+                            <p class="text-2xl text-green-100 mb-8">Transforme seus equipamentos parados em dinheiro na hora!</p>
+                            <div class="grid md:grid-cols-3 gap-6 text-lg">
+                                <div class="bg-white bg-opacity-10 rounded-xl p-6">
+                                    <div class="text-3xl mb-3">⚡</div>
+                                    <h3 class="font-bold mb-2">Avaliação Rápida</h3>
+                                    <p class="text-green-100">Análise em até 24h</p>
+                                </div>
+                                <div class="bg-white bg-opacity-10 rounded-xl p-6">
+                                    <div class="text-3xl mb-3">💵</div>
+                                    <h3 class="font-bold mb-2">Pagamento à Vista</h3>
+                                    <p class="text-green-100">Dinheiro na hora</p>
+                                </div>
+                                <div class="bg-white bg-opacity-10 rounded-xl p-6">
+                                    <div class="text-3xl mb-3">🚚</div>
+                                    <h3 class="font-bold mb-2">Retirada Grátis</h3>
+                                    <p class="text-green-100">Buscamos no local</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Equipment Categories -->
+                <div class="mb-16">
+                    <h2 class="text-4xl font-bold text-center text-gray-800 mb-12">🔧 Equipamentos que Compramos</h2>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div class="bg-white rounded-2xl p-6 shadow-lg card-hover border-2 border-gray-200 hover:border-green-400">
+                            <div class="text-center">
+                                <div class="bg-blue-100 rounded-lg p-4 mb-4">
+                                    <svg class="w-12 h-12 text-blue-600 mx-auto" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M4 4h16v2H4V4zm0 4h16v8H4V8zm2 2v4h12v-4H6z"/>
+                                    </svg>
+                                </div>
+                                <h3 class="font-bold text-gray-800 mb-2">Mesas Aço Inox</h3>
+                                <p class="text-gray-600 text-sm">Todas as medidas e modelos</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-2xl p-6 shadow-lg card-hover border-2 border-gray-200 hover:border-green-400">
+                            <div class="text-center">
+                                <div class="bg-red-100 rounded-lg p-4 mb-4">
+                                    <svg class="w-12 h-12 text-red-600 mx-auto" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/>
+                                    </svg>
+                                </div>
+                                <h3 class="font-bold text-gray-800 mb-2">Fogões Industriais</h3>
+                                <p class="text-gray-600 text-sm">4, 6 bocas, com/sem forno</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-2xl p-6 shadow-lg card-hover border-2 border-gray-200 hover:border-green-400">
+                            <div class="text-center">
+                                <div class="bg-cyan-100 rounded-lg p-4 mb-4">
+                                    <svg class="w-12 h-12 text-cyan-600 mx-auto" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M5,5H10V7H7V10H5V5M14,5H19V10H17V7H14V5M17,14H19V19H14V17H17V14M10,17V19H5V14H7V17H10Z"/>
+                                    </svg>
+                                </div>
+                                <h3 class="font-bold text-gray-800 mb-2">Geladeiras</h3>
+                                <p class="text-gray-600 text-sm">Expositoras, inox, freezers</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-2xl p-6 shadow-lg card-hover border-2 border-gray-200 hover:border-green-400">
+                            <div class="text-center">
+                                <div class="bg-purple-100 rounded-lg p-4 mb-4">
+                                    <svg class="w-12 h-12 text-purple-600 mx-auto" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"/>
+                                    </svg>
+                                </div>
+                                <h3 class="font-bold text-gray-800 mb-2">Outros Equipamentos</h3>
+                                <p class="text-gray-600 text-sm">Fritadeiras, chapeiras, etc.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Call to Action -->
+                <div class="max-w-6xl mx-auto">
+                    <!-- Primary CTA Section -->
+                    <div class="bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 rounded-3xl shadow-2xl p-12 mb-16 text-center">
+                        <div class="max-w-4xl mx-auto">
+                            <h2 class="text-6xl font-bold text-white mb-6 drop-shadow-lg">
+                                💰 TRANSFORME SEUS EQUIPAMENTOS EM DINHEIRO!
+                            </h2>
+                            <p class="text-3xl text-yellow-100 mb-8 font-semibold">
+                                Não deixe seus equipamentos parados!
+                            </p>
+                            <p class="text-2xl text-white mb-8">
+                                Venda para a UP Cozinhas e receba o <strong>MELHOR PREÇO</strong> do mercado!
+                            </p>
+                            
+                            <div class="bg-white bg-opacity-20 rounded-2xl p-8 mb-8">
+                                <div class="grid md:grid-cols-3 gap-6 text-white">
+                                    <div class="text-center">
+                                        <div class="text-5xl mb-3">⚡</div>
+                                        <h3 class="text-xl font-bold mb-2">AVALIAÇÃO RÁPIDA</h3>
+                                        <p class="text-yellow-100">Resposta em até 24h</p>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-5xl mb-3">💵</div>
+                                        <h3 class="text-xl font-bold mb-2">PAGAMENTO À VISTA</h3>
+                                        <p class="text-yellow-100">Dinheiro na hora da retirada</p>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-5xl mb-3">🚚</div>
+                                        <h3 class="text-xl font-bold mb-2">RETIRADA GRÁTIS</h3>
+                                        <p class="text-yellow-100">Buscamos no seu local</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <button onclick="contactForSelling()" class="bg-white text-orange-600 font-bold py-6 px-12 rounded-2xl text-2xl transition-all transform hover:scale-105 shadow-2xl hover:shadow-3xl pulse-animation">
+                                📱 VENDER AGORA - WHATSAPP
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Why Choose Us Section -->
+                    <div class="grid md:grid-cols-2 gap-12 mb-16">
+                        <!-- Left Column -->
+                        <div class="bg-white rounded-2xl shadow-xl p-8">
+                            <h3 class="text-3xl font-bold text-gray-800 mb-6 text-center">🏆 Por que vender para nós?</h3>
+                            <div class="space-y-6">
+                                <div class="flex items-start space-x-4">
+                                    <div class="bg-green-100 rounded-full p-3 flex-shrink-0">
+                                        <svg class="w-6 h-6 text-green-600" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-xl font-bold text-gray-800 mb-2">Especialistas no Mercado</h4>
+                                        <p class="text-gray-600">Mais de 10 anos comprando e vendendo equipamentos profissionais</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start space-x-4">
+                                    <div class="bg-blue-100 rounded-full p-3 flex-shrink-0">
+                                        <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-xl font-bold text-gray-800 mb-2">Avaliação Justa</h4>
+                                        <p class="text-gray-600">Conhecemos o valor real dos equipamentos e pagamos preços justos</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start space-x-4">
+                                    <div class="bg-purple-100 rounded-full p-3 flex-shrink-0">
+                                        <svg class="w-6 h-6 text-purple-600" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M16.2,16.2L11,13V7H12.5V12.2L17,14.9L16.2,16.2Z"/>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-xl font-bold text-gray-800 mb-2">Processo Rápido</h4>
+                                        <p class="text-gray-600">Sem burocracia! Avaliação, negociação e pagamento em poucos dias</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start space-x-4">
+                                    <div class="bg-orange-100 rounded-full p-3 flex-shrink-0">
+                                        <svg class="w-6 h-6 text-orange-600" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-xl font-bold text-gray-800 mb-2">Confiança Total</h4>
+                                        <p class="text-gray-600">Empresa estabelecida com CNPJ e centenas de clientes satisfeitos</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right Column -->
+                        <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl shadow-xl p-8">
+                            <h3 class="text-3xl font-bold text-gray-800 mb-6 text-center">💡 Situações Ideais para Vender</h3>
+                            <div class="space-y-4">
+                                <div class="bg-white rounded-xl p-4 shadow-sm">
+                                    <div class="flex items-center space-x-3">
+                                        <span class="text-2xl">🏪</span>
+                                        <span class="font-semibold text-gray-800">Fechando o estabelecimento</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-white rounded-xl p-4 shadow-sm">
+                                    <div class="flex items-center space-x-3">
+                                        <span class="text-2xl">🔄</span>
+                                        <span class="font-semibold text-gray-800">Renovando os equipamentos</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-white rounded-xl p-4 shadow-sm">
+                                    <div class="flex items-center space-x-3">
+                                        <span class="text-2xl">📦</span>
+                                        <span class="font-semibold text-gray-800">Equipamentos parados no estoque</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-white rounded-xl p-4 shadow-sm">
+                                    <div class="flex items-center space-x-3">
+                                        <span class="text-2xl">🏠</span>
+                                        <span class="font-semibold text-gray-800">Mudança de endereço</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-white rounded-xl p-4 shadow-sm">
+                                    <div class="flex items-center space-x-3">
+                                        <span class="text-2xl">💰</span>
+                                        <span class="font-semibold text-gray-800">Precisando de dinheiro rápido</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-white rounded-xl p-4 shadow-sm">
+                                    <div class="flex items-center space-x-3">
+                                        <span class="text-2xl">🔧</span>
+                                        <span class="font-semibold text-gray-800">Equipamentos com defeito</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-8 text-center">
+                                <p class="text-lg font-semibold text-green-700 mb-4">
+                                    ✨ Qualquer situação é uma oportunidade!
+                                </p>
+                                <button onclick="contactForSelling()" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-xl transition-colors">
+                                    💬 Falar com Especialista
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonials Section -->
+                    <div class="bg-white rounded-2xl shadow-xl p-8 mb-16">
+                        <h3 class="text-3xl font-bold text-center text-gray-800 mb-8">⭐ O que nossos clientes dizem</h3>
+                        <div class="grid md:grid-cols-3 gap-8">
+                            <div class="text-center">
+                                <div class="bg-yellow-100 rounded-full p-4 mb-4 inline-block">
+                                    <span class="text-3xl">😊</span>
+                                </div>
+                                <p class="text-gray-600 italic mb-4">"Vendi meus equipamentos rapidinho! Preço justo e pagamento na hora. Recomendo!"</p>
+                                <p class="font-semibold text-gray-800">- Carlos, Restaurante</p>
+                            </div>
+                            
+                            <div class="text-center">
+                                <div class="bg-green-100 rounded-full p-4 mb-4 inline-block">
+                                    <span class="text-3xl">👍</span>
+                                </div>
+                                <p class="text-gray-600 italic mb-4">"Processo super fácil! Mandei fotos pelo WhatsApp e em 2 dias já tinham buscado tudo."</p>
+                                <p class="font-semibold text-gray-800">- Ana, Lanchonete</p>
+                            </div>
+                            
+                            <div class="text-center">
+                                <div class="bg-blue-100 rounded-full p-4 mb-4 inline-block">
+                                    <span class="text-3xl">🎉</span>
+                                </div>
+                                <p class="text-gray-600 italic mb-4">"Melhor preço que encontrei! Pessoal muito profissional e confiável."</p>
+                                <p class="font-semibold text-gray-800">- João, Padaria</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Final CTA -->
+                    <div class="text-center bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-12 text-white">
+                        <h3 class="text-4xl font-bold mb-6">🚀 Pronto para Vender?</h3>
+                        <p class="text-xl mb-8">Entre em contato agora e transforme seus equipamentos em dinheiro!</p>
+                        <div class="space-y-4">
+                            <button onclick="contactForSelling()" class="bg-white text-blue-600 font-bold py-4 px-10 rounded-xl text-xl transition-all transform hover:scale-105 shadow-lg mr-4">
+                                📱 WhatsApp Direto
+                            </button>
+                            <p class="text-blue-100">
+                                📞 Atendimento: Segunda a Sexta 9h às 17:30h | Sábado 9h às 13h
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Process Steps -->
+                <div class="mt-16">
+                    <h2 class="text-4xl font-bold text-center text-gray-800 mb-12">🔄 Como Funciona</h2>
+                    <div class="grid md:grid-cols-4 gap-8">
+                        <div class="text-center">
+                            <div class="bg-blue-100 rounded-full p-6 mb-4 inline-block">
+                                <span class="text-3xl font-bold text-blue-600">1</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Envie os Dados</h3>
+                            <p class="text-gray-600">Preencha o formulário com as informações do seu equipamento</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="bg-green-100 rounded-full p-6 mb-4 inline-block">
+                                <span class="text-3xl font-bold text-green-600">2</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Avaliação</h3>
+                            <p class="text-gray-600">Nossa equipe analisa e faz uma proposta justa em até 24h</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="bg-orange-100 rounded-full p-6 mb-4 inline-block">
+                                <span class="text-3xl font-bold text-orange-600">3</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Negociação</h3>
+                            <p class="text-gray-600">Conversamos via WhatsApp para acertar todos os detalhes</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="bg-purple-100 rounded-full p-6 mb-4 inline-block">
+                                <span class="text-3xl font-bold text-purple-600">4</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Retirada & Pagamento</h3>
+                            <p class="text-gray-600">Buscamos no local e pagamos à vista na retirada</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ -->
+                <div class="mt-16 max-w-4xl mx-auto">
+                    <h2 class="text-4xl font-bold text-center text-gray-800 mb-12">❓ Perguntas Frequentes</h2>
+                    <div class="space-y-6">
+                        <div class="bg-white rounded-xl p-6 shadow-lg">
+                            <h3 class="text-xl font-bold text-gray-800 mb-3">🕐 Em quanto tempo recebo a proposta?</h3>
+                            <p class="text-gray-600">Garantimos retorno em até 24 horas úteis via WhatsApp com nossa proposta.</p>
+                        </div>
+                        <div class="bg-white rounded-xl p-6 shadow-lg">
+                            <h3 class="text-xl font-bold text-gray-800 mb-3">💰 Como é feito o pagamento?</h3>
+                            <p class="text-gray-600">Pagamento à vista no momento da retirada, em dinheiro ou PIX.</p>
+                        </div>
+                        <div class="bg-white rounded-xl p-6 shadow-lg">
+                            <h3 class="text-xl font-bold text-gray-800 mb-3">🚚 Vocês retiram em qualquer lugar?</h3>
+                            <p class="text-gray-600">Sim! Fazemos a retirada gratuitamente na Grande São Paulo. Para outras regiões, consulte condições.</p>
+                        </div>
+                        <div class="bg-white rounded-xl p-6 shadow-lg">
+                            <h3 class="text-xl font-bold text-gray-800 mb-3">📋 Que tipos de equipamento vocês compram?</h3>
+                            <p class="text-gray-600">Compramos todos os tipos de equipamentos para cozinha profissional: mesas, pias, fogões, geladeiras, freezers, fritadeiras, chapeiras e muito mais!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="gradient-bg text-white py-16">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <!-- Company Info -->
+                <div class="text-center md:text-left">
+                    <img src="/logo-circular.png" alt="UP Cozinhas Logo" class="w-32 h-32 mx-auto md:mx-0 mb-6 rounded-full shadow-lg">
+                    <h3 class="text-3xl font-bold mb-6">UP Cozinhas</h3>
+                    <p class="text-red-100 text-lg mb-6">Equipamentos profissionais para bares e restaurantes</p>
+                    
+                    <!-- Address -->
+                    <div class="bg-white bg-opacity-10 rounded-xl p-6 mb-6">
+                        <h4 class="text-xl font-bold mb-4 flex items-center">
+                            <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                            </svg>
+                            Nossa Localização
+                        </h4>
+                        <p class="text-red-100">R. Dr. Mário Vicente, 326</p>
+                        <p class="text-red-100">Vila Dom Pedro I</p>
+                        <p class="text-red-100">São Paulo - SP, 04270-000</p>
+                    </div>
+
+                    <!-- Business Hours -->
+                    <div class="bg-white bg-opacity-10 rounded-xl p-6 mb-6">
+                        <h4 class="text-xl font-bold mb-4 flex items-center">
+                            <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M16.2,16.2L11,13V7H12.5V12.2L17,14.9L16.2,16.2Z"/>
+                            </svg>
+                            Horário de Atendimento
+                        </h4>
+                        <div class="space-y-2 text-red-100">
+                            <p class="flex items-center">
+                                <span class="font-semibold mr-2">📅 Segunda a Sexta:</span>
+                                <span>9h às 17:30h</span>
+                            </p>
+                            <p class="flex items-center">
+                                <span class="font-semibold mr-2">📅 Sábado:</span>
+                                <span>9h às 13h</span>
+                            </p>
+                            <p class="text-sm text-red-200 mt-2">
+                                💬 Atendimento via WhatsApp nos horários acima
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Contact Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button onclick="window.open('https://wa.me/5511995192624?text=Olá! Gostaria de mais informações sobre os equipamentos da UP Cozinhas.', '_blank', 'noopener,noreferrer')" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-xl text-lg transition-colors flex items-center justify-center space-x-2">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                            </svg>
+                            <span>WhatsApp</span>
+                        </button>
+                        <button onclick="window.open('https://instagram.com/upcozinhas_oficial', '_blank', 'noopener,noreferrer')" class="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold py-3 px-8 rounded-xl text-lg transition-colors flex items-center justify-center space-x-2">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                            <span>Instagram</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Interactive Map -->
+                <div class="bg-white rounded-2xl p-4 shadow-xl">
+                    <h4 class="text-xl font-bold text-gray-800 mb-4 text-center">📍 Como Chegar</h4>
+                    <div class="relative">
+                        <!-- Map Container -->
+                        <div class="bg-gray-200 rounded-xl h-80 flex items-center justify-center relative overflow-hidden">
+                            <!-- Static Map Background -->
+                            <div class="absolute inset-0 bg-gradient-to-br from-blue-100 to-green-100"></div>
+                            
+                            <!-- Map Content -->
+                            <div class="relative z-10 text-center p-6">
+                                <div class="bg-white rounded-full p-4 mb-4 inline-block shadow-lg">
+                                    <svg class="w-12 h-12 text-red-600" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                                    </svg>
+                                </div>
+                                <h5 class="text-lg font-bold text-gray-800 mb-2">UP Cozinhas</h5>
+                                <p class="text-gray-600 text-sm mb-4">R. Dr. Mário Vicente, 326<br>Vila Dom Pedro I - São Paulo/SP</p>
+                                
+                                <!-- Interactive Buttons -->
+                                <div class="space-y-2">
+                                    <button 
+                                        onclick="openGoogleMaps()" 
+                                        class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors flex items-center justify-center space-x-2">
+                                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                                        </svg>
+                                        <span>🗺️ Abrir no Google Maps</span>
+                                    </button>
+                                    
+                                    <button 
+                                        onclick="openWaze()" 
+                                        class="w-full bg-cyan-600 hover:bg-cyan-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors flex items-center justify-center space-x-2">
+                                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                                        </svg>
+                                        <span>🚗 Abrir no Waze</span>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <!-- Decorative Elements -->
+                            <div class="absolute top-4 left-4 w-3 h-3 bg-blue-400 rounded-full opacity-60"></div>
+                            <div class="absolute top-8 right-6 w-2 h-2 bg-green-400 rounded-full opacity-60"></div>
+                            <div class="absolute bottom-6 left-8 w-4 h-4 bg-yellow-400 rounded-full opacity-40"></div>
+                            <div class="absolute bottom-4 right-4 w-2 h-2 bg-purple-400 rounded-full opacity-60"></div>
+                        </div>
+                        
+                        <!-- Address Info Card -->
+                        <div class="mt-4 bg-gray-50 rounded-xl p-4">
+                            <div class="grid md:grid-cols-2 gap-4 text-sm">
+                                <div class="flex items-center space-x-2">
+                                    <svg class="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                                    </svg>
+                                    <span class="text-gray-700">Vila Dom Pedro I, São Paulo</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M16.2,16.2L11,13V7H12.5V12.2L17,14.9L16.2,16.2Z"/>
+                                    </svg>
+                                    <span class="text-gray-700">CEP: 04270-000</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="text-center mt-12 pt-8 border-t border-red-300 border-opacity-30">
+                <p class="text-red-100">© UP Cozinhas Equipamentos para Bares e Restaurantes LTDA</p>
+                <p class="text-red-200 text-sm mt-2">CNPJ: 38.828.079/0001-16 | Todos os direitos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        console.log('UP Cozinhas - Script loaded');
+        
+        // Navigation function
+        window.showPage = function(page) {
+            console.log('showPage called with:', page);
+            
+            // Hide all pages
+            const pages = document.querySelectorAll('.page-section');
+            pages.forEach(p => p.classList.remove('active'));
+            
+            // Show selected page
+            const targetPage = document.getElementById(page + '-page');
+            if (targetPage) {
+                targetPage.classList.add('active');
+            }
+            
+            // Update navigation buttons
+            const navButtons = document.querySelectorAll('nav button[onclick^="showPage"]');
+            navButtons.forEach(btn => {
+                btn.classList.remove('text-red-200');
+                btn.classList.add('hover:text-red-200', 'transition-colors');
+            });
+            
+            const activeButton = document.getElementById(`nav-${page}`);
+            if (activeButton) {
+                activeButton.classList.add('text-red-200');
+            }
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+        
+        // Open used equipment modal
+        window.openUsedEquipmentModal = function() {
+            console.log('openUsedEquipmentModal called');
+            showPage('vender');
+        };
+        
+        // Open cart
+        window.openCart = function() {
+            console.log('openCart called');
+            alert('Funcionalidade de carrinho em desenvolvimento');
+        };
+        
+        // Categories data
+        const categories = [
+            { id: 'mesas', name: 'Mesas de Aço Inox', emoji: '🍴' },
+            { id: 'pias', name: 'Pias de Aço Inox', emoji: '🚰' },
+            { id: 'prateleiras', name: 'Prateleiras de Aço Inox', emoji: '📚' },
+            { id: 'estantes', name: 'Estantes de Aço Inox', emoji: '📦' },
+            { id: 'fogoes', name: 'Fogões Industriais', emoji: '🔥' },
+            { id: 'chapeiras', name: 'Chapeiras Industriais', emoji: '🍳' },
+            { id: 'freezers-horizontais', name: 'Freezers Horizontais', emoji: '❄️' },
+            { id: 'geladeiras-expositoras', name: 'Geladeiras Expositoras', emoji: '🎊' },
+            { id: 'cervejeiras', name: 'Cervejeiras Expositoras', emoji: '🍺' },
+            { id: 'freezer-vertical', name: 'Freezer Vertical', emoji: '❄️' },
+            { id: 'utensilios', name: 'Utensílios', emoji: '🍳' },
+            { id: 'liquidificadores', name: 'Liquidificadores e Extrator de Suco', emoji: '🥤' },
+            { id: 'cutter', name: 'Cutter', emoji: '🔪' },
+            { id: 'ralador', name: 'Ralador de Coco e Queijo', emoji: '🧀' },
+            { id: 'cilindro', name: 'Cilindro Laminador', emoji: '🔧' },
+            { id: 'fritadeiras', name: 'Fritadeiras Elétricas', emoji: '🍟' },
+            { id: 'tacho', name: 'Tacho Elétrico', emoji: '🔥' },
+            { id: 'condimentadora', name: 'Condimentadora/Pizzarola Aço Inox', emoji: '🥄' },
+            { id: 'geladeira-inox', name: 'Geladeira Aço Inox', emoji: '❄️' },
+            { id: 'balcoes', name: 'Balcões Refrigerados', emoji: '📊' },
+            { id: 'cortador-frios', name: 'Cortador de Frios', emoji: '🔪' }
+        ];
+        
+        // Selected categories for quote
+        let selectedCategories = new Set();
+        
+        // Open category modal with multi-selection
+        window.openCategoryModal = function(categoryId) {
+            console.log('openCategoryModal called with:', categoryId);
+            
+            // Check if modal already exists
+            let existingModal = document.getElementById('quote-modal');
+            if (existingModal) {
+                // Just toggle the category
+                toggleCategory(categoryId);
+                return;
+            }
+            
+            // Add the clicked category to selection
+            selectedCategories.add(categoryId);
+            
+            // Create modal
+            const modal = document.createElement('div');
+            modal.id = 'quote-modal';
+            modal.className = 'fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4';
+            modal.innerHTML = `
+                <div class="bg-white rounded-2xl max-w-4xl w-full p-8 max-h-[90vh] overflow-y-auto">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-3xl font-bold text-gray-800">💼 De quais equipamentos você precisa?</h2>
+                        <button onclick="closeQuoteModal()" class="text-gray-500 hover:text-gray-700 text-3xl font-bold leading-none">&times;</button>
+                    </div>
+                    
+                    <p class="text-gray-600 mb-6">Selecione todos os equipamentos que deseja incluir no orçamento:</p>
+                    
+                    <div id="categories-checklist" class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-6">
+                        <!-- Categories will be inserted here -->
+                    </div>
+                    
+                    <div class="bg-red-50 border-2 border-red-200 rounded-xl p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="font-bold text-red-800 text-lg">⭐ Itens selecionados: <span id="selected-count">0</span></h3>
+                            <button onclick="clearSelection()" class="text-red-600 hover:text-red-800 text-sm font-semibold">Limpar seleção</button>
+                        </div>
+                        <p class="text-red-700 mb-4">Entre em contato conosco via WhatsApp para receber informações sobre preços, tamanhos disponíveis e condições de pagamento.</p>
+                        <button onclick="solicitarOrcamentoMultiplo()" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-4 px-6 rounded-xl text-lg transition-colors flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed" id="quote-button">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                            </svg>
+                            <span>📱 Solicitar Orçamento via WhatsApp</span>
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            
+            // Populate categories checklist
+            renderCategoriesChecklist();
+            
+            // Close modal on background click
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    closeQuoteModal();
+                }
+            });
+        };
+        
+        // Render categories checklist
+        function renderCategoriesChecklist() {
+            const container = document.getElementById('categories-checklist');
+            if (!container) return;
+            
+            container.innerHTML = categories.map(cat => `
+                <label class="flex items-center space-x-3 p-3 rounded-lg border-2 cursor-pointer transition-all ${
+                    selectedCategories.has(cat.id) ? 'border-red-500 bg-red-50' : 'border-gray-200 hover:border-red-300'
+                }">
+                    <input type="checkbox" 
+                           class="w-5 h-5 text-red-600 rounded" 
+                           ${selectedCategories.has(cat.id) ? 'checked' : ''}
+                           onchange="toggleCategory('${cat.id}')">
+                    <span class="text-2xl">${cat.emoji}</span>
+                    <span class="font-semibold text-gray-800">${cat.name}</span>
+                </label>
+            `).join('');
+            
+            updateSelectedCount();
+        }
+        
+        // Toggle category selection
+        window.toggleCategory = function(categoryId) {
+            if (selectedCategories.has(categoryId)) {
+                selectedCategories.delete(categoryId);
+            } else {
+                selectedCategories.add(categoryId);
+            }
+            renderCategoriesChecklist();
+        };
+        
+        // Clear all selections
+        window.clearSelection = function() {
+            selectedCategories.clear();
+            renderCategoriesChecklist();
+        };
+        
+        // Update selected count
+        function updateSelectedCount() {
+            const countElement = document.getElementById('selected-count');
+            const button = document.getElementById('quote-button');
+            if (countElement) {
+                countElement.textContent = selectedCategories.size;
+            }
+            if (button) {
+                button.disabled = selectedCategories.size === 0;
+            }
+        }
+        
+        // Close quote modal
+        window.closeQuoteModal = function() {
+            const modal = document.getElementById('quote-modal');
+            if (modal) {
+                modal.remove();
+            }
+            selectedCategories.clear();
+        };
+        
+        // Request quote for multiple categories
+        window.solicitarOrcamentoMultiplo = function() {
+            if (selectedCategories.size === 0) {
+                alert('Por favor, selecione pelo menos um equipamento.');
+                return;
+            }
+            
+            const selectedNames = Array.from(selectedCategories)
+                .map(id => categories.find(c => c.id === id)?.name)
+                .filter(name => name);
+            
+            let message;
+            if (selectedNames.length === 1) {
+                message = `Olá! Gostaria de solicitar um orçamento para ${selectedNames[0]}. Podem me enviar informações sobre preços, tamanhos disponíveis e condições de pagamento?\n\n(Contato via site)`;
+            } else {
+                const lastItem = selectedNames.pop();
+                message = `Olá! Gostaria de solicitar um orçamento para os seguintes equipamentos:\n\n${selectedNames.map((name, i) => `${i + 1}. ${name}`).join('\n')}\n${selectedNames.length + 1}. ${lastItem}\n\nPodem me enviar informações sobre preços, tamanhos disponíveis e condições de pagamento?\n\n(Contato via site)`;
+            }
+            
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/5511995192624?text=${encodedMessage}`;
+            window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+            
+            closeQuoteModal();
+        };
+        
+        // Request quote via WhatsApp
+        window.solicitarOrcamento = function(categoryName) {
+            const message = `Olá! Gostaria de solicitar um orçamento para ${categoryName}. Podem me enviar informações sobre preços, tamanhos disponíveis e condições de pagamento?\n\n(Contato via site)`;
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/5511995192624?text=${encodedMessage}`;
+            window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+        };
+        
+        console.log('Functions defined successfully');
+        // Map functions
+        window.openGoogleMaps = function() {
+            const address = 'R. Dr. Mário Vicente, 326, Vila Dom Pedro I, São Paulo - SP, 04270-000';
+            const url = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
+            window.open(url, '_blank');
+        };
+        
+        window.openWaze = function() {
+            const address = 'R. Dr. Mário Vicente, 326, Vila Dom Pedro I, São Paulo - SP, 04270-000';
+            const url = `https://waze.com/ul?q=${encodeURIComponent(address)}&navigate=yes`;
+            window.open(url, '_blank');
+        };
+    </script>
+</body>
+</html>
