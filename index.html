@@ -284,6 +284,34 @@
                 </div>
             </section>
 
+            <!-- Instagram Feed Section -->
+            <section class="py-16 bg-white">
+                <div class="container mx-auto px-4">
+                    <div class="text-center mb-12">
+                        <h2 class="text-4xl font-bold text-gray-800 mb-4">📸 Siga-nos no Instagram</h2>
+                        <p class="text-xl text-gray-600 mb-6">Acompanhe nossas novidades, produtos e promoções</p>
+                        <a href="https://www.instagram.com/upcozinhas_oficial/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold py-3 px-6 rounded-xl hover:from-purple-700 hover:to-pink-700 transition-all shadow-lg hover:shadow-xl">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                            @upcozinhas_oficial
+                        </a>
+                    </div>
+                    
+                    <!-- Instagram Feed Grid -->
+                    <div id="instagram-feed" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 max-w-6xl mx-auto">
+                        <!-- Feed will be loaded here -->
+                    </div>
+                    <div id="instagram-loading" class="text-center py-8">
+                        <div class="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600"></div>
+                        <p class="text-gray-600 mt-4">Carregando feed do Instagram...</p>
+                    </div>
+                    <div id="instagram-error" class="text-center py-8 hidden">
+                        <p class="text-gray-600">Visite nosso perfil para ver as últimas postagens!</p>
+                    </div>
+                </div>
+            </section>
+
             <!-- Products Section -->
             <section id="produtos" class="py-16 bg-gray-100">
                 <div class="container mx-auto px-4">
@@ -291,54 +319,6 @@
                     
                     <!-- Product Categories Grid -->
                     <div id="categoriesGrid" class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-                        <!-- Mesas de Aço Inox -->
-                        <div class="bg-white rounded-xl p-4 shadow-lg card-hover border-2 border-gray-200 hover:border-red-400 cursor-pointer transition-all" onclick="openCategoryModal('mesas')">
-                            <div class="text-center">
-                                <div class="text-5xl mb-3">🍴</div>
-                                <h3 class="font-bold text-gray-800 mb-1 text-sm">Mesas de Aço Inox</h3>
-                                <p class="text-gray-600 text-xs">Mesas profissionais em aço inoxidável</p>
-                                <button class="mt-3 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold py-2 px-4 rounded-lg transition-colors w-full">
-                                    Ver Produtos
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <!-- Pias de Aço Inox -->
-                        <div class="bg-white rounded-xl p-4 shadow-lg card-hover border-2 border-gray-200 hover:border-red-400 cursor-pointer transition-all" onclick="openCategoryModal('pias')">
-                            <div class="text-center">
-                                <div class="text-5xl mb-3">🚰</div>
-                                <h3 class="font-bold text-gray-800 mb-1 text-sm">Pias de Aço Inox</h3>
-                                <p class="text-gray-600 text-xs">Pias profissionais em aço inoxidável</p>
-                                <button class="mt-3 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold py-2 px-4 rounded-lg transition-colors w-full">
-                                    Ver Produtos
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <!-- Prateleiras -->
-                        <div class="bg-white rounded-xl p-4 shadow-lg card-hover border-2 border-gray-200 hover:border-red-400 cursor-pointer transition-all" onclick="openCategoryModal('prateleiras')">
-                            <div class="text-center">
-                                <div class="text-5xl mb-3">📚</div>
-                                <h3 class="font-bold text-gray-800 mb-1 text-sm">Prateleiras de Aço Inox</h3>
-                                <p class="text-gray-600 text-xs">Prateleiras para organização</p>
-                                <button class="mt-3 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold py-2 px-4 rounded-lg transition-colors w-full">
-                                    Ver Produtos
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <!-- Estantes -->
-                        <div class="bg-white rounded-xl p-4 shadow-lg card-hover border-2 border-gray-200 hover:border-red-400 cursor-pointer transition-all" onclick="openCategoryModal('estantes')">
-                            <div class="text-center">
-                                <div class="text-5xl mb-3">📦</div>
-                                <h3 class="font-bold text-gray-800 mb-1 text-sm">Estantes de Aço Inox</h3>
-                                <p class="text-gray-600 text-xs">Estantes para armazenamento</p>
-                                <button class="mt-3 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold py-2 px-4 rounded-lg transition-colors w-full">
-                                    Ver Produtos
-                                </button>
-                            </div>
-                        </div>
-                        
                         <!-- Fogões Industriais -->
                         <div class="bg-white rounded-xl p-4 shadow-lg card-hover border-2 border-gray-200 hover:border-red-400 cursor-pointer transition-all" onclick="openCategoryModal('fogoes')">
                             <div class="text-center">
@@ -350,8 +330,8 @@
                                 </button>
                             </div>
                         </div>
-                        
-                        <!-- Chapeiras -->
+
+                        <!-- Chapeiras Industriais -->
                         <div class="bg-white rounded-xl p-4 shadow-lg card-hover border-2 border-gray-200 hover:border-red-400 cursor-pointer transition-all" onclick="openCategoryModal('chapeiras')">
                             <div class="text-center">
                                 <div class="text-5xl mb-3">🍳</div>
@@ -362,115 +342,7 @@
                                 </button>
                             </div>
                         </div>
-                        
-                        <!-- Freezers Horizontais -->
-                        <div class="bg-white rounded-xl p-4 shadow-lg card-hover border-2 border-gray-200 hover:border-red-400 cursor-pointer transition-all" onclick="openCategoryModal('freezers-horizontais')">
-                            <div class="text-center">
-                                <div class="text-5xl mb-3">❄️</div>
-                                <h3 class="font-bold text-gray-800 mb-1 text-sm">Freezers Horizontais</h3>
-                                <p class="text-gray-600 text-xs">Freezers para armazenamento</p>
-                                <button class="mt-3 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold py-2 px-4 rounded-lg transition-colors w-full">
-                                    Ver Produtos
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <!-- Geladeiras Expositoras -->
-                        <div class="bg-white rounded-xl p-4 shadow-lg card-hover border-2 border-gray-200 hover:border-red-400 cursor-pointer transition-all" onclick="openCategoryModal('geladeiras-expositoras')">
-                            <div class="text-center">
-                                <div class="text-5xl mb-3">🎊</div>
-                                <h3 class="font-bold text-gray-800 mb-1 text-sm">Geladeiras Expositoras</h3>
-                                <p class="text-gray-600 text-xs">Geladeiras para exposição</p>
-                                <button class="mt-3 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold py-2 px-4 rounded-lg transition-colors w-full">
-                                    Ver Produtos
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <!-- Cervejeiras Expositoras -->
-                        <div class="bg-white rounded-xl p-4 shadow-lg card-hover border-2 border-gray-200 hover:border-red-400 cursor-pointer transition-all" onclick="openCategoryModal('cervejeiras')">
-                            <div class="text-center">
-                                <div class="text-5xl mb-3">🍺</div>
-                                <h3 class="font-bold text-gray-800 mb-1 text-sm">Cervejeiras Expositoras</h3>
-                                <p class="text-gray-600 text-xs">Cervejeiras para bebidas</p>
-                                <button class="mt-3 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold py-2 px-4 rounded-lg transition-colors w-full">
-                                    Ver Produtos
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <!-- Freezer Vertical -->
-                        <div class="bg-white rounded-xl p-4 shadow-lg card-hover border-2 border-gray-200 hover:border-red-400 cursor-pointer transition-all" onclick="openCategoryModal('freezer-vertical')">
-                            <div class="text-center">
-                                <div class="text-5xl mb-3">❄️</div>
-                                <h3 class="font-bold text-gray-800 mb-1 text-sm">Freezer Vertical</h3>
-                                <p class="text-gray-600 text-xs">Freezers verticais profissionais</p>
-                                <button class="mt-3 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold py-2 px-4 rounded-lg transition-colors w-full">
-                                    Ver Produtos
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <!-- Utensílios -->
-                        <div class="bg-white rounded-xl p-4 shadow-lg card-hover border-2 border-gray-200 hover:border-red-400 cursor-pointer transition-all" onclick="openCategoryModal('utensilios')">
-                            <div class="text-center">
-                                <div class="text-5xl mb-3">🍳</div>
-                                <h3 class="font-bold text-gray-800 mb-1 text-sm">Utensílios</h3>
-                                <p class="text-gray-600 text-xs">Utensílios profissionais de cozinha</p>
-                                <button class="mt-3 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold py-2 px-4 rounded-lg transition-colors w-full">
-                                    Ver Produtos
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <!-- Liquidificadores e Extrator de Suco -->
-                        <div class="bg-white rounded-xl p-4 shadow-lg card-hover border-2 border-gray-200 hover:border-red-400 cursor-pointer transition-all" onclick="openCategoryModal('liquidificadores')">
-                            <div class="text-center">
-                                <div class="text-5xl mb-3">🥤</div>
-                                <h3 class="font-bold text-gray-800 mb-1 text-sm">Liquidificadores e Extrator de Suco</h3>
-                                <p class="text-gray-600 text-xs">Equipamentos para bebidas</p>
-                                <button class="mt-3 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold py-2 px-4 rounded-lg transition-colors w-full">
-                                    Ver Produtos
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <!-- Cutter -->
-                        <div class="bg-white rounded-xl p-4 shadow-lg card-hover border-2 border-gray-200 hover:border-red-400 cursor-pointer transition-all" onclick="openCategoryModal('cutter')">
-                            <div class="text-center">
-                                <div class="text-5xl mb-3">🔪</div>
-                                <h3 class="font-bold text-gray-800 mb-1 text-sm">Cutter</h3>
-                                <p class="text-gray-600 text-xs">Processadores industriais</p>
-                                <button class="mt-3 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold py-2 px-4 rounded-lg transition-colors w-full">
-                                    Ver Produtos
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <!-- Ralador de Coco e Queijo -->
-                        <div class="bg-white rounded-xl p-4 shadow-lg card-hover border-2 border-gray-200 hover:border-red-400 cursor-pointer transition-all" onclick="openCategoryModal('ralador')">
-                            <div class="text-center">
-                                <div class="text-5xl mb-3">🧀</div>
-                                <h3 class="font-bold text-gray-800 mb-1 text-sm">Ralador de Coco e Queijo</h3>
-                                <p class="text-gray-600 text-xs">Raladores profissionais</p>
-                                <button class="mt-3 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold py-2 px-4 rounded-lg transition-colors w-full">
-                                    Ver Produtos
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <!-- Cilindro Laminador -->
-                        <div class="bg-white rounded-xl p-4 shadow-lg card-hover border-2 border-gray-200 hover:border-red-400 cursor-pointer transition-all" onclick="openCategoryModal('cilindro')">
-                            <div class="text-center">
-                                <div class="text-5xl mb-3">🔧</div>
-                                <h3 class="font-bold text-gray-800 mb-1 text-sm">Cilindro Laminador</h3>
-                                <p class="text-gray-600 text-xs">Cilindros para massas</p>
-                                <button class="mt-3 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold py-2 px-4 rounded-lg transition-colors w-full">
-                                    Ver Produtos
-                                </button>
-                            </div>
-                        </div>
-                        
+
                         <!-- Fritadeiras Elétricas -->
                         <div class="bg-white rounded-xl p-4 shadow-lg card-hover border-2 border-gray-200 hover:border-red-400 cursor-pointer transition-all" onclick="openCategoryModal('fritadeiras')">
                             <div class="text-center">
@@ -482,107 +354,354 @@
                                 </button>
                             </div>
                         </div>
-                        
+
+                        <!-- Fornos Combinados -->
+                        <div class="bg-white rounded-xl p-4 shadow-lg card-hover border-2 border-gray-200 hover:border-red-400 cursor-pointer transition-all" onclick="openCategoryModal('fornos-combinados')">
+                            <div class="text-center">
+                                <div class="text-5xl mb-3">🔥</div>
+                                <h3 class="font-bold text-gray-800 mb-1 text-sm">Fornos Combinados</h3>
+                                <p class="text-gray-600 text-xs">Fornos profissionais multiuso</p>
+                                <button class="mt-3 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold py-2 px-4 rounded-lg transition-colors w-full">
+                                    Ver Produtos
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Fornos de Pizza -->
+                        <div class="bg-white rounded-xl p-4 shadow-lg card-hover border-2 border-gray-200 hover:border-red-400 cursor-pointer transition-all" onclick="openCategoryModal('fornos-pizza')">
+                            <div class="text-center">
+                                <div class="text-5xl mb-3">🍕</div>
+                                <h3 class="font-bold text-gray-800 mb-1 text-sm">Fornos de Pizza</h3>
+                                <p class="text-gray-600 text-xs">Fornos específicos para pizzarias</p>
+                                <button class="mt-3 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold py-2 px-4 rounded-lg transition-colors w-full">
+                                    Ver Produtos
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Grill/Salamandra -->
+                        <div class="bg-white rounded-xl p-4 shadow-lg card-hover border-2 border-gray-200 hover:border-red-400 cursor-pointer transition-all" onclick="openCategoryModal('grill')">
+                            <div class="text-center">
+                                <div class="text-5xl mb-3">🥩</div>
+                                <h3 class="font-bold text-gray-800 mb-1 text-sm">Grill/Salamandra</h3>
+                                <p class="text-gray-600 text-xs">Para gratinar e finalizar pratos</p>
+                                <button class="mt-3 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold py-2 px-4 rounded-lg transition-colors w-full">
+                                    Ver Produtos
+                                </button>
+                            </div>
+                        </div>
+
                         <!-- Tacho Elétrico -->
                         <div class="bg-white rounded-xl p-4 shadow-lg card-hover border-2 border-gray-200 hover:border-red-400 cursor-pointer transition-all" onclick="openCategoryModal('tacho')">
                             <div class="text-center">
-                                <div class="text-5xl mb-3">🔥</div>
+                                <div class="text-5xl mb-3">🍲</div>
                                 <h3 class="font-bold text-gray-800 mb-1 text-sm">Tacho Elétrico</h3>
-                                <p class="text-gray-600 text-xs">Tachos para cozimento</p>
+                                <p class="text-gray-600 text-xs">Tachos elétricos industriais</p>
                                 <button class="mt-3 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold py-2 px-4 rounded-lg transition-colors w-full">
                                     Ver Produtos
                                 </button>
                             </div>
                         </div>
-                        
-                        <!-- Condimentadora/Pizzarola -->
-                        <div class="bg-white rounded-xl p-4 shadow-lg card-hover border-2 border-gray-200 hover:border-red-400 cursor-pointer transition-all" onclick="openCategoryModal('condimentadora')">
+
+                        <!-- Freezers Horizontais -->
+                        <div class="bg-white rounded-xl p-4 shadow-lg card-hover border-2 border-gray-200 hover:border-red-400 cursor-pointer transition-all" onclick="openCategoryModal('freezers-horizontais')">
                             <div class="text-center">
-                                <div class="text-5xl mb-3">🥄</div>
-                                <h3 class="font-bold text-gray-800 mb-1 text-sm">Condimentadora/Pizzarola Aço Inox</h3>
-                                <p class="text-gray-600 text-xs">Condimentadoras profissionais</p>
+                                <div class="text-5xl mb-3">❄️</div>
+                                <h3 class="font-bold text-gray-800 mb-1 text-sm">Freezers Horizontais</h3>
+                                <p class="text-gray-600 text-xs">Freezers para armazenamento</p>
                                 <button class="mt-3 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold py-2 px-4 rounded-lg transition-colors w-full">
                                     Ver Produtos
                                 </button>
                             </div>
                         </div>
-                        
+
+                        <!-- Freezer Vertical -->
+                        <div class="bg-white rounded-xl p-4 shadow-lg card-hover border-2 border-gray-200 hover:border-red-400 cursor-pointer transition-all" onclick="openCategoryModal('freezer-vertical')">
+                            <div class="text-center">
+                                <div class="text-5xl mb-3">🧊</div>
+                                <h3 class="font-bold text-gray-800 mb-1 text-sm">Freezer Vertical</h3>
+                                <p class="text-gray-600 text-xs">Freezers verticais</p>
+                                <button class="mt-3 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold py-2 px-4 rounded-lg transition-colors w-full">
+                                    Ver Produtos
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Geladeiras Expositoras -->
+                        <div class="bg-white rounded-xl p-4 shadow-lg card-hover border-2 border-gray-200 hover:border-red-400 cursor-pointer transition-all" onclick="openCategoryModal('geladeiras-expositoras')">
+                            <div class="text-center">
+                                <div class="text-5xl mb-3">🥤</div>
+                                <h3 class="font-bold text-gray-800 mb-1 text-sm">Geladeiras Expositoras</h3>
+                                <p class="text-gray-600 text-xs">Geladeiras para exposição</p>
+                                <button class="mt-3 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold py-2 px-4 rounded-lg transition-colors w-full">
+                                    Ver Produtos
+                                </button>
+                            </div>
+                        </div>
+
                         <!-- Geladeira Aço Inox -->
                         <div class="bg-white rounded-xl p-4 shadow-lg card-hover border-2 border-gray-200 hover:border-red-400 cursor-pointer transition-all" onclick="openCategoryModal('geladeira-inox')">
                             <div class="text-center">
-                                <div class="text-5xl mb-3">❄️</div>
+                                <div class="text-5xl mb-3">🧊</div>
                                 <h3 class="font-bold text-gray-800 mb-1 text-sm">Geladeira Aço Inox</h3>
-                                <p class="text-gray-600 text-xs">Geladeiras profissionais inox</p>
+                                <p class="text-gray-600 text-xs">Geladeiras profissionais em inox</p>
                                 <button class="mt-3 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold py-2 px-4 rounded-lg transition-colors w-full">
                                     Ver Produtos
                                 </button>
                             </div>
                         </div>
-                        
+
+                        <!-- Cervejeiras Expositoras -->
+                        <div class="bg-white rounded-xl p-4 shadow-lg card-hover border-2 border-gray-200 hover:border-red-400 cursor-pointer transition-all" onclick="openCategoryModal('cervejeiras')">
+                            <div class="text-center">
+                                <div class="text-5xl mb-3">🍺</div>
+                                <h3 class="font-bold text-gray-800 mb-1 text-sm">Cervejeiras Expositoras</h3>
+                                <p class="text-gray-600 text-xs">Cervejeiras para bares</p>
+                                <button class="mt-3 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold py-2 px-4 rounded-lg transition-colors w-full">
+                                    Ver Produtos
+                                </button>
+                            </div>
+                        </div>
+
                         <!-- Balcões Refrigerados -->
                         <div class="bg-white rounded-xl p-4 shadow-lg card-hover border-2 border-gray-200 hover:border-red-400 cursor-pointer transition-all" onclick="openCategoryModal('balcoes')">
                             <div class="text-center">
-                                <div class="text-5xl mb-3">📊</div>
+                                <div class="text-5xl mb-3">🧊</div>
                                 <h3 class="font-bold text-gray-800 mb-1 text-sm">Balcões Refrigerados</h3>
-                                <p class="text-gray-600 text-xs">Balcões refrigerados profissionais</p>
+                                <p class="text-gray-600 text-xs">Balcões com refrigeração</p>
                                 <button class="mt-3 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold py-2 px-4 rounded-lg transition-colors w-full">
                                     Ver Produtos
                                 </button>
                             </div>
                         </div>
-                        
+
+                        <!-- Bancada Refrigerada -->
+                        <div class="bg-white rounded-xl p-4 shadow-lg card-hover border-2 border-gray-200 hover:border-red-400 cursor-pointer transition-all" onclick="openCategoryModal('bancada-refrigerada')">
+                            <div class="text-center">
+                                <div class="text-5xl mb-3">🧊</div>
+                                <h3 class="font-bold text-gray-800 mb-1 text-sm">Bancada Refrigerada</h3>
+                                <p class="text-gray-600 text-xs">Mesa com refrigeração integrada</p>
+                                <button class="mt-3 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold py-2 px-4 rounded-lg transition-colors w-full">
+                                    Ver Produtos
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Liquidificadores e Extrator de Suco -->
+                        <div class="bg-white rounded-xl p-4 shadow-lg card-hover border-2 border-gray-200 hover:border-red-400 cursor-pointer transition-all" onclick="openCategoryModal('liquidificadores')">
+                            <div class="text-center">
+                                <div class="text-5xl mb-3">🥤</div>
+                                <h3 class="font-bold text-gray-800 mb-1 text-sm">Liquidificadores e Extrator de Suco</h3>
+                                <p class="text-gray-600 text-xs">Liquidificadores industriais</p>
+                                <button class="mt-3 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold py-2 px-4 rounded-lg transition-colors w-full">
+                                    Ver Produtos
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Batedeiras Industriais -->
+                        <div class="bg-white rounded-xl p-4 shadow-lg card-hover border-2 border-gray-200 hover:border-red-400 cursor-pointer transition-all" onclick="openCategoryModal('batedeiras')">
+                            <div class="text-center">
+                                <div class="text-5xl mb-3">🍰</div>
+                                <h3 class="font-bold text-gray-800 mb-1 text-sm">Batedeiras Industriais</h3>
+                                <p class="text-gray-600 text-xs">Para padarias e confeitarias</p>
+                                <button class="mt-3 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold py-2 px-4 rounded-lg transition-colors w-full">
+                                    Ver Produtos
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Masseiras -->
+                        <div class="bg-white rounded-xl p-4 shadow-lg card-hover border-2 border-gray-200 hover:border-red-400 cursor-pointer transition-all" onclick="openCategoryModal('masseiras')">
+                            <div class="text-center">
+                                <div class="text-5xl mb-3">🍞</div>
+                                <h3 class="font-bold text-gray-800 mb-1 text-sm">Masseiras</h3>
+                                <p class="text-gray-600 text-xs">Para preparar massas</p>
+                                <button class="mt-3 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold py-2 px-4 rounded-lg transition-colors w-full">
+                                    Ver Produtos
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Processador de Alimentos -->
+                        <div class="bg-white rounded-xl p-4 shadow-lg card-hover border-2 border-gray-200 hover:border-red-400 cursor-pointer transition-all" onclick="openCategoryModal('processador')">
+                            <div class="text-center">
+                                <div class="text-5xl mb-3">🥗</div>
+                                <h3 class="font-bold text-gray-800 mb-1 text-sm">Processador de Alimentos</h3>
+                                <p class="text-gray-600 text-xs">Para cortar e processar</p>
+                                <button class="mt-3 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold py-2 px-4 rounded-lg transition-colors w-full">
+                                    Ver Produtos
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Moedor de Carne -->
+                        <div class="bg-white rounded-xl p-4 shadow-lg card-hover border-2 border-gray-200 hover:border-red-400 cursor-pointer transition-all" onclick="openCategoryModal('moedor')">
+                            <div class="text-center">
+                                <div class="text-5xl mb-3">🥩</div>
+                                <h3 class="font-bold text-gray-800 mb-1 text-sm">Moedor de Carne</h3>
+                                <p class="text-gray-600 text-xs">Para açougues e hamburguerias</p>
+                                <button class="mt-3 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold py-2 px-4 rounded-lg transition-colors w-full">
+                                    Ver Produtos
+                                </button>
+                            </div>
+                        </div>
+
                         <!-- Cortador de Frios -->
                         <div class="bg-white rounded-xl p-4 shadow-lg card-hover border-2 border-gray-200 hover:border-red-400 cursor-pointer transition-all" onclick="openCategoryModal('cortador-frios')">
                             <div class="text-center">
-                                <div class="text-5xl mb-3">🔪</div>
+                                <div class="text-5xl mb-3">🥓</div>
                                 <h3 class="font-bold text-gray-800 mb-1 text-sm">Cortador de Frios</h3>
-                                <p class="text-gray-600 text-xs">Cortadores profissionais de frios</p>
+                                <p class="text-gray-600 text-xs">Fatiadores profissionais</p>
                                 <button class="mt-3 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold py-2 px-4 rounded-lg transition-colors w-full">
                                     Ver Produtos
                                 </button>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Mesas de Aço Inox Section -->
-                    <div id="mesasSection" style="display: none;">
-                        <div class="text-center mb-8">
-                            <h3 class="text-3xl font-bold text-gray-800 mb-4">🔵 Mesas de Aço Inox</h3>
-                            <div class="bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-2xl p-6 max-w-4xl mx-auto mb-8">
-                                <h4 class="text-2xl font-bold mb-3">⭐ A Melhor qualidade do mercado!! + garantia de 1 ano</h4>
-                                <p class="text-blue-100 text-lg">Mesas profissionais em aço inoxidável para cozinhas industriais</p>
-                            </div>
-                            <p class="text-gray-600 text-lg mb-4">(comprimento x largura x altura)</p>
-                            <div class="bg-blue-50 border-2 border-blue-200 rounded-xl p-4 max-w-2xl mx-auto mb-8">
-                                <div class="flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-8 text-blue-700">
-                                    <div class="flex items-center space-x-2">
-                                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                                        </svg>
-                                        <span class="font-semibold">Fazemos também sob medida</span>
-                                    </div>
-                                    <div class="flex items-center space-x-2">
-                                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                                        </svg>
-                                        <span class="font-semibold">Mesa com rodinhas +R$ 250</span>
-                                    </div>
-                                </div>
+                        <!-- Cutter -->
+                        <div class="bg-white rounded-xl p-4 shadow-lg card-hover border-2 border-gray-200 hover:border-red-400 cursor-pointer transition-all" onclick="openCategoryModal('cutter')">
+                            <div class="text-center">
+                                <div class="text-5xl mb-3">⚙️</div>
+                                <h3 class="font-bold text-gray-800 mb-1 text-sm">Cutter</h3>
+                                <p class="text-gray-600 text-xs">Processador industrial</p>
+                                <button class="mt-3 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold py-2 px-4 rounded-lg transition-colors w-full">
+                                    Ver Produtos
+                                </button>
                             </div>
                         </div>
-                        
-                        <div class="container mx-auto px-4">
-                            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="mesasGrid">
-                                <!-- Products will be populated by JavaScript -->
+
+                        <!-- Ralador de Coco e Queijo -->
+                        <div class="bg-white rounded-xl p-4 shadow-lg card-hover border-2 border-gray-200 hover:border-red-400 cursor-pointer transition-all" onclick="openCategoryModal('ralador')">
+                            <div class="text-center">
+                                <div class="text-5xl mb-3">🥥</div>
+                                <h3 class="font-bold text-gray-800 mb-1 text-sm">Ralador de Coco e Queijo</h3>
+                                <p class="text-gray-600 text-xs">Raladores profissionais</p>
+                                <button class="mt-3 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold py-2 px-4 rounded-lg transition-colors w-full">
+                                    Ver Produtos
+                                </button>
                             </div>
                         </div>
-                    </div>
 
+                        <!-- Cilindro Laminador -->
+                        <div class="bg-white rounded-xl p-4 shadow-lg card-hover border-2 border-gray-200 hover:border-red-400 cursor-pointer transition-all" onclick="openCategoryModal('cilindro')">
+                            <div class="text-center">
+                                <div class="text-5xl mb-3">🍝</div>
+                                <h3 class="font-bold text-gray-800 mb-1 text-sm">Cilindro Laminador</h3>
+                                <p class="text-gray-600 text-xs">Para massas e folhados</p>
+                                <button class="mt-3 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold py-2 px-4 rounded-lg transition-colors w-full">
+                                    Ver Produtos
+                                </button>
+                            </div>
+                        </div>
 
+                        <!-- Mesas de Aço Inox -->
+                        <div class="bg-white rounded-xl p-4 shadow-lg card-hover border-2 border-gray-200 hover:border-red-400 cursor-pointer transition-all" onclick="openCategoryModal('mesas')">
+                            <div class="text-center">
+                                <div class="text-5xl mb-3">🍴</div>
+                                <h3 class="font-bold text-gray-800 mb-1 text-sm">Mesas de Aço Inox</h3>
+                                <p class="text-gray-600 text-xs">Mesas profissionais em aço inoxidável</p>
+                                <button class="mt-3 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold py-2 px-4 rounded-lg transition-colors w-full">
+                                    Ver Produtos
+                                </button>
+                            </div>
+                        </div>
 
-                    <!-- Product sections -->
-                    <div id="productSections">
-                        <!-- Product sections will be added here -->
+                        <!-- Pias de Aço Inox -->
+                        <div class="bg-white rounded-xl p-4 shadow-lg card-hover border-2 border-gray-200 hover:border-red-400 cursor-pointer transition-all" onclick="openCategoryModal('pias')">
+                            <div class="text-center">
+                                <div class="text-5xl mb-3">🚰</div>
+                                <h3 class="font-bold text-gray-800 mb-1 text-sm">Pias de Aço Inox</h3>
+                                <p class="text-gray-600 text-xs">Pias profissionais em aço inoxidável</p>
+                                <button class="mt-3 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold py-2 px-4 rounded-lg transition-colors w-full">
+                                    Ver Produtos
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Prateleiras de Aço Inox -->
+                        <div class="bg-white rounded-xl p-4 shadow-lg card-hover border-2 border-gray-200 hover:border-red-400 cursor-pointer transition-all" onclick="openCategoryModal('prateleiras')">
+                            <div class="text-center">
+                                <div class="text-5xl mb-3">📚</div>
+                                <h3 class="font-bold text-gray-800 mb-1 text-sm">Prateleiras de Aço Inox</h3>
+                                <p class="text-gray-600 text-xs">Prateleiras para organização</p>
+                                <button class="mt-3 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold py-2 px-4 rounded-lg transition-colors w-full">
+                                    Ver Produtos
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Estantes de Aço Inox -->
+                        <div class="bg-white rounded-xl p-4 shadow-lg card-hover border-2 border-gray-200 hover:border-red-400 cursor-pointer transition-all" onclick="openCategoryModal('estantes')">
+                            <div class="text-center">
+                                <div class="text-5xl mb-3">📦</div>
+                                <h3 class="font-bold text-gray-800 mb-1 text-sm">Estantes de Aço Inox</h3>
+                                <p class="text-gray-600 text-xs">Estantes para armazenamento</p>
+                                <button class="mt-3 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold py-2 px-4 rounded-lg transition-colors w-full">
+                                    Ver Produtos
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Condimentadora/Pizzarola -->
+                        <div class="bg-white rounded-xl p-4 shadow-lg card-hover border-2 border-gray-200 hover:border-red-400 cursor-pointer transition-all" onclick="openCategoryModal('condimentadora')">
+                            <div class="text-center">
+                                <div class="text-5xl mb-3">🍕</div>
+                                <h3 class="font-bold text-gray-800 mb-1 text-sm">Condimentadora/Pizzarola</h3>
+                                <p class="text-gray-600 text-xs">Para temperos e pizzas</p>
+                                <button class="mt-3 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold py-2 px-4 rounded-lg transition-colors w-full">
+                                    Ver Produtos
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Lava-Louças Industrial -->
+                        <div class="bg-white rounded-xl p-4 shadow-lg card-hover border-2 border-gray-200 hover:border-red-400 cursor-pointer transition-all" onclick="openCategoryModal('lava-loucas')">
+                            <div class="text-center">
+                                <div class="text-5xl mb-3">🧼</div>
+                                <h3 class="font-bold text-gray-800 mb-1 text-sm">Lava-Louças Industrial</h3>
+                                <p class="text-gray-600 text-xs">Para higienização rápida</p>
+                                <button class="mt-3 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold py-2 px-4 rounded-lg transition-colors w-full">
+                                    Ver Produtos
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Seladora a Vácuo -->
+                        <div class="bg-white rounded-xl p-4 shadow-lg card-hover border-2 border-gray-200 hover:border-red-400 cursor-pointer transition-all" onclick="openCategoryModal('seladora')">
+                            <div class="text-center">
+                                <div class="text-5xl mb-3">📦</div>
+                                <h3 class="font-bold text-gray-800 mb-1 text-sm">Seladora a Vácuo</h3>
+                                <p class="text-gray-600 text-xs">Para embalar alimentos</p>
+                                <button class="mt-3 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold py-2 px-4 rounded-lg transition-colors w-full">
+                                    Ver Produtos
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Carrinhos de Transporte -->
+                        <div class="bg-white rounded-xl p-4 shadow-lg card-hover border-2 border-gray-200 hover:border-red-400 cursor-pointer transition-all" onclick="openCategoryModal('carrinhos')">
+                            <div class="text-center">
+                                <div class="text-5xl mb-3">🛒</div>
+                                <h3 class="font-bold text-gray-800 mb-1 text-sm">Carrinhos de Transporte</h3>
+                                <p class="text-gray-600 text-xs">Para movimentação</p>
+                                <button class="mt-3 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold py-2 px-4 rounded-lg transition-colors w-full">
+                                    Ver Produtos
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Utensílios -->
+                        <div class="bg-white rounded-xl p-4 shadow-lg card-hover border-2 border-gray-200 hover:border-red-400 cursor-pointer transition-all" onclick="openCategoryModal('utensilios')">
+                            <div class="text-center">
+                                <div class="text-5xl mb-3">🍴</div>
+                                <h3 class="font-bold text-gray-800 mb-1 text-sm">Utensílios</h3>
+                                <p class="text-gray-600 text-xs">Utensílios diversos</p>
+                                <button class="mt-3 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold py-2 px-4 rounded-lg transition-colors w-full">
+                                    Ver Produtos
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -1142,31 +1261,44 @@
         
         // Categories data
         const categories = [
+            { id: 'fogoes', name: 'Fogões Industriais', emoji: '🔥' },
+            { id: 'chapeiras', name: 'Chapeiras Industriais', emoji: '🍳' },
+            { id: 'fritadeiras', name: 'Fritadeiras Elétricas', emoji: '🍟' },
+            { id: 'fornos-combinados', name: 'Fornos Combinados', emoji: '🔥' },
+            { id: 'fornos-pizza', name: 'Fornos de Pizza', emoji: '🍕' },
+            { id: 'grill', name: 'Grill/Salamandra', emoji: '🥩' },
+            { id: 'tacho', name: 'Tacho Elétrico', emoji: '🍲' },
+            { id: 'freezers-horizontais', name: 'Freezers Horizontais', emoji: '❄️' },
+            { id: 'freezer-vertical', name: 'Freezer Vertical', emoji: '🧊' },
+            { id: 'geladeiras-expositoras', name: 'Geladeiras Expositoras', emoji: '🥤' },
+            { id: 'geladeira-inox', name: 'Geladeira Aço Inox', emoji: '🧊' },
+            { id: 'cervejeiras', name: 'Cervejeiras Expositoras', emoji: '🍺' },
+            { id: 'balcoes', name: 'Balcões Refrigerados', emoji: '🧊' },
+            { id: 'bancada-refrigerada', name: 'Bancada Refrigerada', emoji: '🧊' },
+            { id: 'liquidificadores', name: 'Liquidificadores e Extrator de Suco', emoji: '🥤' },
+            { id: 'batedeiras', name: 'Batedeiras Industriais', emoji: '🍰' },
+            { id: 'masseiras', name: 'Masseiras', emoji: '🍞' },
+            { id: 'processador', name: 'Processador de Alimentos', emoji: '🥗' },
+            { id: 'moedor', name: 'Moedor de Carne', emoji: '🥩' },
+            { id: 'cortador-frios', name: 'Cortador de Frios', emoji: '🥓' },
+            { id: 'cutter', name: 'Cutter', emoji: '⚙️' },
+            { id: 'ralador', name: 'Ralador de Coco e Queijo', emoji: '🥥' },
+            { id: 'cilindro', name: 'Cilindro Laminador', emoji: '🍝' },
             { id: 'mesas', name: 'Mesas de Aço Inox', emoji: '🍴' },
             { id: 'pias', name: 'Pias de Aço Inox', emoji: '🚰' },
             { id: 'prateleiras', name: 'Prateleiras de Aço Inox', emoji: '📚' },
             { id: 'estantes', name: 'Estantes de Aço Inox', emoji: '📦' },
-            { id: 'fogoes', name: 'Fogões Industriais', emoji: '🔥' },
-            { id: 'chapeiras', name: 'Chapeiras Industriais', emoji: '🍳' },
-            { id: 'freezers-horizontais', name: 'Freezers Horizontais', emoji: '❄️' },
-            { id: 'geladeiras-expositoras', name: 'Geladeiras Expositoras', emoji: '🎊' },
-            { id: 'cervejeiras', name: 'Cervejeiras Expositoras', emoji: '🍺' },
-            { id: 'freezer-vertical', name: 'Freezer Vertical', emoji: '❄️' },
-            { id: 'utensilios', name: 'Utensílios', emoji: '🍳' },
-            { id: 'liquidificadores', name: 'Liquidificadores e Extrator de Suco', emoji: '🥤' },
-            { id: 'cutter', name: 'Cutter', emoji: '🔪' },
-            { id: 'ralador', name: 'Ralador de Coco e Queijo', emoji: '🧀' },
-            { id: 'cilindro', name: 'Cilindro Laminador', emoji: '🔧' },
-            { id: 'fritadeiras', name: 'Fritadeiras Elétricas', emoji: '🍟' },
-            { id: 'tacho', name: 'Tacho Elétrico', emoji: '🔥' },
-            { id: 'condimentadora', name: 'Condimentadora/Pizzarola Aço Inox', emoji: '🥄' },
-            { id: 'geladeira-inox', name: 'Geladeira Aço Inox', emoji: '❄️' },
-            { id: 'balcoes', name: 'Balcões Refrigerados', emoji: '📊' },
-            { id: 'cortador-frios', name: 'Cortador de Frios', emoji: '🔪' }
+            { id: 'condimentadora', name: 'Condimentadora/Pizzarola', emoji: '🍕' },
+            { id: 'lava-loucas', name: 'Lava-Louças Industrial', emoji: '🧼' },
+            { id: 'seladora', name: 'Seladora a Vácuo', emoji: '📦' },
+            { id: 'carrinhos', name: 'Carrinhos de Transporte', emoji: '🛒' },
+            { id: 'utensilios', name: 'Utensílios', emoji: '🍴' },
         ];
         
         // Selected categories for quote
         let selectedCategories = new Set();
+        // Store condition (new/used) for each category
+        let categoryConditions = {};
         
         // Open category modal with multi-selection
         window.openCategoryModal = function(categoryId) {
@@ -1234,28 +1366,68 @@
             const container = document.getElementById('categories-checklist');
             if (!container) return;
             
-            container.innerHTML = categories.map(cat => `
-                <label class="flex items-center space-x-3 p-3 rounded-lg border-2 cursor-pointer transition-all ${
-                    selectedCategories.has(cat.id) ? 'border-red-500 bg-red-50' : 'border-gray-200 hover:border-red-300'
+            container.innerHTML = categories.map(cat => {
+                const isSelected = selectedCategories.has(cat.id);
+                const condition = categoryConditions[cat.id] || 'novo';
+                return `
+                <div class="p-3 rounded-lg border-2 transition-all ${
+                    isSelected ? 'border-red-500 bg-red-50' : 'border-gray-200'
                 }">
-                    <input type="checkbox" 
-                           class="w-5 h-5 text-red-600 rounded" 
-                           ${selectedCategories.has(cat.id) ? 'checked' : ''}
-                           onchange="toggleCategory('${cat.id}')">
-                    <span class="text-2xl">${cat.emoji}</span>
-                    <span class="font-semibold text-gray-800">${cat.name}</span>
-                </label>
-            `).join('');
+                    <label class="flex items-center space-x-3 cursor-pointer">
+                        <input type="checkbox" 
+                               class="w-5 h-5 text-red-600 rounded" 
+                               ${isSelected ? 'checked' : ''}
+                               onchange="toggleCategory('${cat.id}')">
+                        <span class="text-2xl">${cat.emoji}</span>
+                        <span class="font-semibold text-gray-800">${cat.name}</span>
+                    </label>
+                    ${isSelected ? `
+                    <div class="mt-2 ml-8 flex gap-2">
+                        <label class="flex items-center gap-2 px-3 py-1 rounded-lg cursor-pointer transition-all ${
+                            condition === 'novo' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                        }">
+                            <input type="radio" 
+                                   name="condition-${cat.id}" 
+                                   value="novo"
+                                   ${condition === 'novo' ? 'checked' : ''}
+                                   onchange="setCategoryCondition('${cat.id}', 'novo')"
+                                   class="hidden">
+                            <span class="text-sm font-semibold">✨ Novo</span>
+                        </label>
+                        <label class="flex items-center gap-2 px-3 py-1 rounded-lg cursor-pointer transition-all ${
+                            condition === 'usado' ? 'bg-orange-500 text-white' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                        }">
+                            <input type="radio" 
+                                   name="condition-${cat.id}" 
+                                   value="usado"
+                                   ${condition === 'usado' ? 'checked' : ''}
+                                   onchange="setCategoryCondition('${cat.id}', 'usado')"
+                                   class="hidden">
+                            <span class="text-sm font-semibold">♻️ Usado</span>
+                        </label>
+                    </div>
+                    ` : ''}
+                </div>
+            `;
+            }).join('');
             
             updateSelectedCount();
         }
+        
+        // Set category condition (new/used)
+        window.setCategoryCondition = function(categoryId, condition) {
+            categoryConditions[categoryId] = condition;
+            renderCategoriesChecklist();
+        };
         
         // Toggle category selection
         window.toggleCategory = function(categoryId) {
             if (selectedCategories.has(categoryId)) {
                 selectedCategories.delete(categoryId);
+                delete categoryConditions[categoryId];
             } else {
                 selectedCategories.add(categoryId);
+                categoryConditions[categoryId] = 'novo'; // Default to new
             }
             renderCategoriesChecklist();
         };
@@ -1263,6 +1435,7 @@
         // Clear all selections
         window.clearSelection = function() {
             selectedCategories.clear();
+            categoryConditions = {};
             renderCategoriesChecklist();
         };
         
@@ -1285,6 +1458,7 @@
                 modal.remove();
             }
             selectedCategories.clear();
+            categoryConditions = {};
         };
         
         // Request quote for multiple categories
@@ -1294,17 +1468,20 @@
                 return;
             }
             
-            const selectedNames = Array.from(selectedCategories)
-                .map(id => categories.find(c => c.id === id)?.name)
-                .filter(name => name);
+            const selectedItems = Array.from(selectedCategories)
+                .map(id => {
+                    const cat = categories.find(c => c.id === id);
+                    const condition = categoryConditions[id] || 'novo';
+                    const conditionText = condition === 'novo' ? 'NOVO' : 'USADO';
+                    return cat ? `${cat.name} - ${conditionText}` : null;
+                })
+                .filter(item => item);
             
-            let message;
-            if (selectedNames.length === 1) {
-                message = `Olá! Gostaria de solicitar um orçamento para ${selectedNames[0]}. Podem me enviar informações sobre preços, tamanhos disponíveis e condições de pagamento?\n\n(Contato via site)`;
-            } else {
-                const lastItem = selectedNames.pop();
-                message = `Olá! Gostaria de solicitar um orçamento para os seguintes equipamentos:\n\n${selectedNames.map((name, i) => `${i + 1}. ${name}`).join('\n')}\n${selectedNames.length + 1}. ${lastItem}\n\nPodem me enviar informações sobre preços, tamanhos disponíveis e condições de pagamento?\n\n(Contato via site)`;
-            }
+            let message = 'Olá! Gostaria de solicitar orçamento para os seguintes equipamentos (Contato via site):\n\n';
+            selectedItems.forEach((item, i) => {
+                message += `✅ ${item}\n`;
+            });
+            message += '\nAguardo retorno!';
             
             const encodedMessage = encodeURIComponent(message);
             const whatsappUrl = `https://wa.me/5511995192624?text=${encodedMessage}`;
@@ -1334,6 +1511,80 @@
             const url = `https://waze.com/ul?q=${encodeURIComponent(address)}&navigate=yes`;
             window.open(url, '_blank');
         };
+        
+        // Load Instagram Feed
+        async function loadInstagramFeed() {
+            const feedContainer = document.getElementById('instagram-feed');
+            const loadingEl = document.getElementById('instagram-loading');
+            const errorEl = document.getElementById('instagram-error');
+            
+            try {
+                // Using a public Instagram scraper API
+                const username = 'upcozinhas_oficial';
+                const response = await fetch(`https://www.instagram.com/${username}/?__a=1&__d=dis`);
+                
+                if (!response.ok) {
+                    throw new Error('Failed to load');
+                }
+                
+                const data = await response.json();
+                const posts = data.graphql?.user?.edge_owner_to_timeline_media?.edges || [];
+                
+                if (posts.length === 0) {
+                    throw new Error('No posts found');
+                }
+                
+                // Display first 6 posts
+                const postsToShow = posts.slice(0, 6);
+                
+                feedContainer.innerHTML = postsToShow.map(edge => {
+                    const post = edge.node;
+                    const imageUrl = post.thumbnail_src || post.display_url;
+                    const postUrl = `https://www.instagram.com/p/${post.shortcode}/`;
+                    const caption = post.edge_media_to_caption?.edges[0]?.node?.text || '';
+                    
+                    return `
+                        <a href="${postUrl}" target="_blank" rel="noopener noreferrer" class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-all duration-300">
+                            <img src="${imageUrl}" alt="${caption.substring(0, 50)}" class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                                <div class="text-white text-sm">
+                                    <svg class="w-6 h-6 inline" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                                    </svg>
+                                    ${post.edge_liked_by?.count || 0}
+                                </div>
+                            </div>
+                        </a>
+                    `;
+                }).join('');
+                
+                loadingEl.classList.add('hidden');
+                feedContainer.classList.remove('hidden');
+                
+            } catch (error) {
+                console.error('Error loading Instagram feed:', error);
+                // Fallback: Show static placeholder images with link to profile
+                feedContainer.innerHTML = `
+                    <a href="https://www.instagram.com/upcozinhas_oficial/" target="_blank" rel="noopener noreferrer" class="col-span-2 md:col-span-3 lg:col-span-6">
+                        <div class="bg-gradient-to-r from-purple-100 to-pink-100 rounded-lg p-8 text-center hover:shadow-lg transition-all">
+                            <svg class="w-16 h-16 mx-auto mb-4 text-purple-600" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-2">Visite nosso Instagram</h3>
+                            <p class="text-gray-600 mb-4">Clique para ver nossas últimas postagens e novidades</p>
+                            <span class="inline-block bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold py-2 px-6 rounded-lg">@upcozinhas_oficial</span>
+                        </div>
+                    </a>
+                `;
+                loadingEl.classList.add('hidden');
+                feedContainer.classList.remove('hidden');
+            }
+        }
+        
+        // Load feed when page loads
+        if (document.getElementById('instagram-feed')) {
+            loadInstagramFeed();
+        }
     </script>
 </body>
 </html>

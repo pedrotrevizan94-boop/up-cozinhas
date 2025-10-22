@@ -1,80 +1,129 @@
-# UP Cozinhas - Site Oficial
+# UP Cozinhas - Equipamentos Profissionais
 
-Site oficial da **UP Cozinhas**, empresa especializada em equipamentos profissionais para cozinhas industriais e comerciais.
+Site profissional para venda de equipamentos para bares, restaurantes e cozinhas industriais.
 
-## 🏢 Sobre a Empresa
+## 🎉 Versão 2.0 - Atualizações
 
-**UP Cozinhas** oferece soluções completas em equipamentos para cozinhas profissionais, atendendo restaurantes, bares, lanchonetes, padarias e estabelecimentos comerciais em geral.
+### ✨ Novidades desta versão:
 
-**CNPJ:** 38.828.079/0001-16  
-**WhatsApp:** (11) 97201-2568  
-**Endereço:** Rua Exemplo, 123 - São Paulo, SP
+#### 1. Sistema Novo/Usado Individual
+- Cliente pode escolher se quer cada produto **NOVO** ou **USADO**
+- Seleção individual para cada categoria
+- Mensagem do WhatsApp inclui a condição escolhida
+- Interface visual com botões azul (Novo) e laranja (Usado)
 
-## 🚀 Funcionalidades do Site
+#### 2. Categorias Expandidas (21 → 32)
+**Novas categorias adicionadas:**
+- Fornos Combinados 🔥
+- Fornos de Pizza 🍕
+- Grill/Salamandra 🥩
+- Batedeiras Industriais 🍰
+- Masseiras 🍞
+- Processador de Alimentos 🥗
+- Moedor de Carne 🥩
+- Bancada Refrigerada 🧊
+- Lava-Louças Industrial 🧼
+- Seladora a Vácuo 📦
+- Carrinhos de Transporte 🛒
 
-### Página Principal (index.html)
-- **Catálogo de Produtos:** 21 categorias de equipamentos profissionais
-- **Sistema de Cotação Multi-Seleção:** Selecione múltiplos produtos e solicite orçamento via WhatsApp
-- **Integração WhatsApp:** Envio automático de mensagens formatadas com produtos selecionados
-- **Mapas Integrados:** Botões para Google Maps e Waze no rodapé
-- **Design Responsivo:** Otimizado para desktop, tablet e mobile
-- **Redes Sociais:** Links para WhatsApp e Instagram
+**Organização por grupos:**
+- 🔥 Equipamentos de Cocção (7)
+- ❄️ Equipamentos de Refrigeração (7)
+- 🔪 Equipamentos de Preparo (9)
+- 🍴 Mobiliário e Organização (4)
+- 🧼 Equipamentos Auxiliares (5)
 
-### Página Vender Equipamentos (/vender.html)
-- **Formulário de Contato:** Para clientes que desejam vender equipamentos usados
-- **URL Independente:** Acesso direto via /vender ou /vender.html
-- **SEO Otimizado:** Meta tags específicas para esta página
+#### 3. Feed do Instagram
+- Seção dedicada ao Instagram @upcozinhas_oficial
+- Botão para seguir o perfil
+- Design moderno com gradiente roxo/rosa
+- Fallback inteligente caso as fotos não carreguem
 
-## 🎨 Tecnologias Utilizadas
-
-- **HTML5:** Estrutura semântica
-- **Tailwind CSS:** Framework CSS via CDN
-- **JavaScript Vanilla:** Funcionalidades interativas
-- **Vercel:** Hospedagem e deploy automático
-- **GitHub:** Controle de versão
-
-## 📱 Categorias de Produtos
-
-O site apresenta 21 categorias de equipamentos:
-
-1. Fogões Industriais
-2. Chapas e Bifeteiras
-3. Fritadeiras
-4. Fornos Combinados
-5. Fornos de Pizza
-6. Masseiras e Batedeiras
-7. Liquidificadores Industriais
-8. Processadores de Alimentos
-9. Moedores de Carne
-10. Cortadores de Frios
-11. Câmaras Frias
-12. Freezers e Geladeiras
-13. Balcões Refrigerados
-14. Pias e Mesas de Inox
-15. Estantes e Prateleiras
-16. Carrinhos de Transporte
-17. Exaustores e Coifas
-18. Lavadoras de Louça
-19. Aquecedores de Água
-20. Seladores a Vácuo
-21. Equipamentos de Buffet
-
-## 🔧 Como Atualizar o Site
-
-Este site está configurado com **deploy automático** via Vercel + GitHub:
-
-1. Faça alterações nos arquivos HTML localmente
-2. Commit e push para o repositório GitHub
-3. O Vercel detecta automaticamente as mudanças
-4. O site é atualizado em poucos segundos
-
-## 📞 Contato
-
-- **WhatsApp:** (11) 97201-2568
-- **Instagram:** @upcozinhas
-- **Site:** https://upcozinhas.vercel.app
+#### 4. Melhorias Gerais
+- Banner da loja funcionando
+- Cabeçalhos padronizados entre páginas
+- Layout mobile otimizado
+- WhatsApp atualizado: (11) 99519-2624
 
 ---
 
-© 2025 UP Cozinhas - CNPJ: 38.828.079/0001-16 - Todos os direitos reservados.
+## 📁 Estrutura de Arquivos
+
+```
+.
+├── index.html           # Página principal (Produtos)
+├── vender.html          # Página "Vender Equipamentos"
+├── banner-loja.png      # Banner da loja física
+├── logo-up-cozinhas.png # Logo principal
+├── logo-circular.png    # Logo circular
+├── favicon.png          # Ícone do site
+├── vercel.json          # Configuração Vercel
+├── .gitignore           # Arquivos ignorados pelo Git
+└── README.md            # Este arquivo
+```
+
+---
+
+## 🚀 Como Atualizar no GitHub/Vercel
+
+### Opção 1: Upload Direto (Mais Fácil)
+
+1. Acesse seu repositório no GitHub
+2. Clique em **"Add file"** → **"Upload files"**
+3. Arraste todos os arquivos desta pasta
+4. Marque **"Replace existing files"** quando perguntado
+5. Clique em **"Commit changes"**
+6. A Vercel detectará automaticamente e fará o deploy
+
+### Opção 2: Substituir Arquivo por Arquivo
+
+1. Para cada arquivo que mudou (`index.html` e `vender.html`):
+   - Abra o arquivo no GitHub
+   - Clique na lixeira 🗑️ para deletar
+   - Faça upload do arquivo novo
+2. Para `banner-loja.png`:
+   - Clique em **"Add file"** → **"Upload files"**
+   - Arraste o arquivo
+   - Commit
+
+---
+
+## 📱 Contatos
+
+- **WhatsApp Produtos:** (11) 99519-2624
+- **WhatsApp Vender:** (11) 97201-2568
+- **Instagram:** @upcozinhas_oficial
+- **Endereço:** R. Dr. Mário Vicente, 326 - Vila Dom Pedro I, São Paulo - SP
+
+---
+
+## 🎨 Tecnologias
+
+- HTML5
+- Tailwind CSS (via CDN)
+- JavaScript Vanilla
+- Vercel (Hospedagem)
+
+---
+
+## 📝 Changelog
+
+### Versão 2.0 (Outubro 2025)
+- ✅ Sistema Novo/Usado implementado
+- ✅ 11 novas categorias de produtos
+- ✅ Feed do Instagram integrado
+- ✅ Banner da loja adicionado
+- ✅ Cabeçalhos padronizados
+- ✅ WhatsApp atualizado
+
+### Versão 1.0 (Outubro 2025)
+- ✅ Lançamento inicial
+- ✅ 21 categorias de produtos
+- ✅ Sistema de cotação via WhatsApp
+- ✅ Página "Vender Equipamentos"
+- ✅ Design responsivo
+
+---
+
+**© UP Cozinhas Equipamentos para Bares e Restaurantes LTDA**
 
